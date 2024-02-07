@@ -32,3 +32,12 @@ ich ein eigenes Projekt.
 **Aufgewendete Zeit**: 4h
 
 **Zwischenbilanz Gesamtaufwand**: 8h
+
+## Tag 3 - 07.02.2024
+**Aktivitäten**
+- Aufsetzen aller voraussichtlich gebrauchten Repos auf github
+- Nachtrag Arbeitsjournal der letzten Tage, sowie Tag 3
+
+**Aufgewendete Zeit**: 45 min
+
+**Zwischenbilanz Gesamtaufwand**: 8h 45min
