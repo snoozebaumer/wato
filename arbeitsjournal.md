@@ -16,7 +16,7 @@ ich ein eigenes Projekt.
 
 **Aktivitäten**:
 - Recherche eines möglichen Projekts
-- Technologierecherche / 
+- Technologierecherche / Machbarkeit
 - Definition Projektanforderungen
 
 **Aufgewendete Zeit**: 4h
@@ -24,7 +24,6 @@ ich ein eigenes Projekt.
 **Zwischenbilanz Gesamtaufwand**: 4h
 
 ## Tag 2 - 06.02.2024
-
 **Aktivitäten**:
 - Definition Projektanforderungen
 - Definition Technologiestack
