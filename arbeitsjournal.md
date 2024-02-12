@@ -41,3 +41,19 @@ ich ein eigenes Projekt.
 **Aufgewendete Zeit**: 45 min
 
 **Zwischenbilanz Gesamtaufwand**: 8h 45min
+
+## Tag 4 - 12.02.2024
+**Aktivitäten**
+- Arbeit an Story 1: Erstellen eines Spiels
+  - Initialiserung des Angular Projekts in `wato-frontend`
+  - Erstellung der Komponente "CreateChallenge" inkl. Styling
+- Recherche zu Angular Animations und Übersetzungsframeworks
+
+**Aufgewendete Zeit**: 7h
+
+**Nächste Schritte:**
+- Serverkomponenten erstellen (Gateway, Game-Service, User-Service) und Formulardaten an den Server senden
+- Routing implementieren, es soll über Routing zum nächsten Schritt gewechselt werden können (inkl. Animation: [Route Animation](https://angular.io/guide/route-animations))
+
+
+**Zwischenbilanz Gesamtaufwand**: 15h 45min
