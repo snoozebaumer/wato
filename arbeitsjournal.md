@@ -51,9 +51,26 @@ ich ein eigenes Projekt.
 
 **Aufgewendete Zeit**: 7h
 
+**Zwischenbilanz Gesamtaufwand**: 15h 45min
+
 **Nächste Schritte:**
 - Serverkomponenten erstellen (Gateway, Game-Service, User-Service) und Formulardaten an den Server senden
 - Routing implementieren, es soll über Routing zum nächsten Schritt gewechselt werden können (inkl. Animation: [Route Animation](https://angular.io/guide/route-animations))
 
+## Tag 5 - 13.02.2024
+Ich rechne damit, dass mir genügend Zeit zur Verfügung steht, die Anforderungen zu erfüllen. 
+Da es einfacher ist, von Anfang an Übersetzungen zu berücksichtigen, habe ich mich entschieden, das Übersetzungsframework `ngx-translate` heute einzubinden.
 
-**Zwischenbilanz Gesamtaufwand**: 15h 45min
+
+**Aktivitäten**
+- Arbeit an Story 1: Erstellen eines Spiels
+  - Erstellung der Serverkomponenten (Gateway, Game-Service, User-Service) noch ohne Datenbankverbindung.
+- Einbindung des Übersetzungsframeworks `ngx-translate` mit Sprachensupport für Schweizerdeutsch, Deutsch und Englisch.
+
+**Aufgewendete Zeit**: 8h
+
+**Zwischenbilanz Gesamtaufwand**: 23h 45min
+
+**Nächste Schritte:**
+- Datenbankverbindung für Persistenz herstellen
+- Routing implementieren
