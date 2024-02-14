@@ -75,3 +75,18 @@ Da es einfacher ist, von Anfang an Übersetzungen zu berücksichtigen, habe ich 
 **Nächste Schritte:**
 - Datenbankverbindung für Persistenz herstellen
 - Routing implementieren
+
+## Tag 6 - 14.02.2024
+**Aktivitäten**
+- Arbeit an Story 1: Erstellen eines Spiels
+  - env-Datei für die Datenbankverbindung erstellt
+  - Aufsetzen Datenbankverbindung cloud.mongodb.com
+  - Challenge Service erstellt
+
+**Aufgewendete Zeit**: 4h
+
+**Zwischenbilanz Gesamtaufwand**: 27h 45min
+
+**Nächste Schritte:**
+- Datenbankverbindung für Persistenz herstellen
+- Routing implementieren
