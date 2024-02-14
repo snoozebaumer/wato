@@ -65,6 +65,7 @@ Da es einfacher ist, von Anfang an Übersetzungen zu berücksichtigen, habe ich 
 **Aktivitäten**
 - Arbeit an Story 1: Erstellen eines Spiels
   - Erstellung der Serverkomponenten (Gateway, Game-Service, User-Service) noch ohne Datenbankverbindung.
+  - Component testing
 - Einbindung des Übersetzungsframeworks `ngx-translate` mit Sprachensupport für Schweizerdeutsch, Deutsch und Englisch.
 
 **Aufgewendete Zeit**: 8h
