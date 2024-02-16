@@ -55,7 +55,7 @@ ich ein eigenes Projekt.
 
 **Nächste Schritte:**
 - Serverkomponenten erstellen (Gateway, Game-Service, User-Service) und Formulardaten an den Server senden
-- Routing implementieren, es soll über Routing zum nächsten Schritt gewechselt werden können (inkl. Animation: [Route Animation](https://angular.io/guide/route-animations))
+- (Story 2) Routing implementieren, es soll über Routing zum nächsten Schritt gewechselt werden können (inkl. Animation: [Route Animation](https://angular.io/guide/route-animations))
 
 ## Tag 5 - 13.02.2024
 Ich rechne damit, dass mir genügend Zeit zur Verfügung steht, die Anforderungen zu erfüllen. 
@@ -74,7 +74,6 @@ Da es einfacher ist, von Anfang an Übersetzungen zu berücksichtigen, habe ich 
 
 **Nächste Schritte:**
 - Datenbankverbindung für Persistenz herstellen
-- Routing implementieren
 
 ## Tag 6 - 14.02.2024
 **Aktivitäten**
@@ -89,4 +88,18 @@ Da es einfacher ist, von Anfang an Übersetzungen zu berücksichtigen, habe ich 
 
 **Nächste Schritte:**
 - Datenbankverbindung für Persistenz herstellen
-- Routing implementieren
+
+## Tag 7 - 16.02.2024
+Die Fertigstellung der Story 1 dauerte aufgrund Knowhow-Beschaffung und Einbau der Übersetzungen länger als geplant. Nun sollte jedoch der Grundstein gelegt sein, um die nächsten Stories zeitgerecht umsetzen zu können.
+
+**Aktivitäten**
+- Fertigstellung Story 1: Erstellen eines Spiels
+  - Datenbankverbindung hergestellt, sodass die Informationen persistiert werden und nach Erstellung die Id des Spiels zum Client zurückgegeben wird.
+
+**Nächste Schritte:**
+- Story 2: Generieren eines URLs (zum Teil abgeschlossen, da clientseitig bereits die Id des Spiels geloggt wird)
+- Story 3: Aufrufen des URLs und Anzeigen des Spiels
+
+**Aufgewendete Zeit**: 6h
+
+**Zwischenbilanz Gesamtaufwand**: 33h 45min
