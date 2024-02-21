@@ -103,3 +103,24 @@ Die Fertigstellung der Story 1 dauerte aufgrund Knowhow-Beschaffung und Einbau d
 **Aufgewendete Zeit**: 6h
 
 **Zwischenbilanz Gesamtaufwand**: 33h 45min
+
+## Tag 8 - 21.02.2024
+Heute war aufgrund der Vorarbeit an Tag 7 etwas produktiver. Es könnte innerhalb der 60 Stunden Aufwand auch noch für die Dokumentation reichen.
+
+**Aktivitäten**
+- Fertigstellung Story 2: Generieren eines URLs
+  - Anzeige des URLs auf separater Seite
+  - erstes Routing
+- Anfang und Fertigstellung Story 3: Aufrufen des URLs
+  - Anzeige der Challenge auf separater Detailseite, auf der das Spiel stattfindet
+  - Routing
+  - Challenge bei Server holen
+
+**Nächste Schritte:**
+- Story 4: Spielbereich bestimmen (Formular bereits auf Detailseite vorhanden)
+  - Serververbindung
+  - Validierung
+
+**Aufgewendete Zeit**: 8h
+
+**Zwischenbilanz Gesamtaufwand**: 41h 45min
