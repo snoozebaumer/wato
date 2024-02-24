@@ -1,4 +1,4 @@
-# Fazit & Reflextion BW WEBLAB
+# Fazit & Reflexion BW WEBLAB
 
 ___
 **Projektname**: WATO - What are the Odds
