@@ -124,3 +124,28 @@ Heute war aufgrund der Vorarbeit an Tag 7 etwas produktiver. Es könnte innerhal
 **Aufgewendete Zeit**: 8h
 
 **Zwischenbilanz Gesamtaufwand**: 41h 45min
+
+## Tag 9 - 24.02.2024
+Morgen sollte ich mit der Umsetzung fertig sein und mit der Dokumentation beginnen können.
+
+**Aktivitäten**
+- Fertigstellung Story 4: Spielbereich bestimmen
+  - Neues Formular für Eingabe des Spielbereichs
+  - PUT-Request auf Gateway und Gameservice
+- Anfang und Fertigstellung Story 5: Zahl auswählen
+  - Neues Formular für Eingabe der Zahl
+  - PUT-Request auf Gameservice erweitert 
+  - Anfang Story 6: Spiel fertigstellen
+    - Neues Formular für Zahleingabe
+    - PUT-Request auf Gameservice erweitert
+
+**Nächste Schritte:**
+- Abschluss Story 6:
+  - Endbildschirm mit Ergebnis, Bereich und Zahlen, welche die Spieler gewählt haben
+- Story 7: Einschränkung der Bearbeitungsrechte
+  - Beim Aufstarten von app.component sollte der User identifiziert werden und in einem UserService zwischengespeichert werden.
+  - Anhand des Users im UserService und dem challengeStatus wird entschieden, ob die Challenge angezeigt wird oder nicht.
+
+**Aufgewendete Zeit**: 9h
+
+**Zwischenbilanz Gesamtaufwand**: 50h 45min
