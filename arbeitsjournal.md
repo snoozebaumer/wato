@@ -149,3 +149,23 @@ Morgen sollte ich mit der Umsetzung fertig sein und mit der Dokumentation beginn
 **Aufgewendete Zeit**: 9h
 
 **Zwischenbilanz Gesamtaufwand**: 50h 45min
+
+## Tag 10 - 25.02.2024
+Nach der Komplettierung des Endbildschirms setze ich erst einmal 4 Stunden in den Sand, da ich nicht merke, dass Firefox keine Cookies mit dem Request
+mitschickt, wenn die Adresse "http://localhost" beinhaltet. Ich probiere mehrere CORS-Lösungen aus, bis ich bemerke, dass der Request, welcher keine
+Cookies mitsendet, der einzige ist, der nicht mit "http://127.0.0.1" startet. Somit mache ich alle Änderungen rückgängig und starte von Neuem. Danach kann
+ich die restlichen Stories, wenn auch genervt, abschliessen.
+
+**Aktivitäten**
+- Fertigstellung Story 6: Spiel fertigstellen
+  - Endbilschirm
+- Fertigstellung Story 7: Bearbeitungsrechte einschränken
+  - Nur Clientseitig: Redirect auf /share, falls keine Rechte bestehen
+  - Für eine serverseitige Kontrolle der Rechte bleibt keine Zeit und ist in der Story nicht explizit beschrieben -> erreicht. Würde ich jedoch in der Praxis in jedem Fall noch machen.
+
+**Nächste Schritte:**
+- Doku und Fazit
+
+**Aufgewendete Zeit**: 10h
+
+**Zwischenbilanz Gesamtaufwand**: 60h 45min
