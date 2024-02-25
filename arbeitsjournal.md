@@ -164,7 +164,7 @@ ich die restlichen Stories, wenn auch genervt, abschliessen.
   - Für eine serverseitige Kontrolle der Rechte bleibt keine Zeit und ist in der Story nicht explizit beschrieben -> erreicht. Würde ich jedoch in der Praxis in jedem Fall noch machen.
 
 **Nächste Schritte:**
-- Doku und Fazit
+- Doku und Fazit komplettieren
 
 **Aufgewendete Zeit**: 10h
 
