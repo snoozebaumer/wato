@@ -178,11 +178,12 @@ Grosser Diagrammspass
   - README.md
   - API-Dokumentation
   - README.md des Gateways und der Microservices
+- Dockerisierung des Backends
 
 **Nächste Schritte:**
 - Fertigstellung der Dokumentation
 - Fazit und Reflexion
 
-**Aufgewendete Zeit**: 8h
+**Aufgewendete Zeit**: 10h
 
-**Zwischenbilanz Gesamtaufwand**: 68h 45min
+**Zwischenbilanz Gesamtaufwand**: 70h 45min
