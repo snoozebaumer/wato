@@ -169,3 +169,20 @@ ich die restlichen Stories, wenn auch genervt, abschliessen.
 **Aufgewendete Zeit**: 10h
 
 **Zwischenbilanz Gesamtaufwand**: 60h 45min
+
+## Tag 11 - 26.02.2024
+Grosser Diagrammspass
+
+**Aktivitäten**
+- Dokumentation
+  - README.md
+  - API-Dokumentation
+  - README.md des Gateways und der Microservices
+
+**Nächste Schritte:**
+- Fertigstellung der Dokumentation
+- Fazit und Reflexion
+
+**Aufgewendete Zeit**: 8h
+
+**Zwischenbilanz Gesamtaufwand**: 68h 45min

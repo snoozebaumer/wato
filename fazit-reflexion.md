@@ -9,3 +9,7 @@ ___
 
 **Semester**: HS23
 ___
+
+- Was ist gut gelaufen? 
+- Wo lagen die Herausforderungen? 
+- Was könnten Sie das nächste Mal anders resp. bessern machen?
