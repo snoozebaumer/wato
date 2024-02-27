@@ -187,3 +187,19 @@ Grosser Diagrammspass
 **Aufgewendete Zeit**: 10h
 
 **Zwischenbilanz Gesamtaufwand**: 70h 45min
+
+## Tag 12 - 27.02.2024
+Die Dokumentation ist fertiggestellt. Das Erstellung der dafür benötigten Diagramme war zeitaufwändig, wie auch das Testen der Anwendung.
+Jedoch denke ich, dass manuelle Tests für eine solch kleine Applikation immer noch weniger mühselig sind, als das Testing im gleichen Umfang zu automatisieren.
+
+**Aktivitäten**
+- Fertigstellung der Dokumentation
+- Testen der Anwendung
+
+**Nächste Schritte:**
+- Fazit und Reflexion
+- Abgabe
+
+**Aufgewendete Zeit**: 10h
+
+**Zwischenbilanz Gesamtaufwand**: 80h 45min
