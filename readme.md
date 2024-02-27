@@ -24,7 +24,7 @@ Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbe
 
 ## Inhaltsverzeichnis
 1. [Einleitung und Zielsetzung](#einleitung-und-zielsetzung)
-   2. [Ablauf](#ablauf)
+   1. [Ablauf](#ablauf)
 2. [Lösungsstrategie](#lösungsstrategie)
 3. [API-Dokumentation](#api-dokumentation)
    1. [Gateway (Öffentlich)](#gateway-öffentlich)
