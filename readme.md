@@ -11,7 +11,6 @@ ___
 ___
 
 Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbeitsjournal siehe [arbeitsjournal.md](arbeitsjournal.md).
-<!--TODO: Fazit schreiben-->
 
 
 ## Bestandteile der Software
@@ -27,9 +26,6 @@ Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbe
    1. [Ablauf](#ablauf)
 2. [Lösungsstrategie](#lösungsstrategie)
 3. [API-Dokumentation](#api-dokumentation)
-   1. [Gateway (Öffentlich)](#gateway-öffentlich)
-   2. [Game Service (Intern)](#game-service-intern)
-   3. [User Service (Intern)](#user-service-intern)
 3. [Bausteinsicht](#bausteinsicht)
    1. [Ebene 1](#ebene-1)
    2. [Ebene 2](#ebene-2)
@@ -87,34 +83,11 @@ Dies bewirkt, dass die Microservices so in ihrer Technologie offen sind, sie kö
 - Die Kommunikation zwischen Frontend und Backend, sowie Gateway und Microservices erfolgt über REST.
 
 ### API-Dokumentation
-#### Gateway (Öffentlich)
 
-| # | Endpoint                                               | Method | Description                                                                                | Request Body                                                                                      | Response Body                                                                                                                                                                                                                                                                                                              |
-|---|--------------------------------------------------------| ------ |--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1 | `/`                                                    | GET    | Get API Status                                                                             | -                                                                                                 | "wato API is running."                                                                                                                                                                                                                                                                                                     |
-| 2 | `/api/challenges`                                      | POST   | Create Challenge                                                                           | `challenge` (string, required)<br>`name` (string, required)<br>`challengeStatus` (enum, required) | `id` (string)                                                                                                                                                                                                                                                                                                              |
-| 3 | `/api/challenges/:id`<br>param: `id`(string, required) | GET    | Get Challenge by ID                                                                        | -                                                                                                 | `id` (string)<br>`challenge` (string)<br>`challengerId` (string)<br>`challengerName` (string)<br>`challengeeId` (string, optional)<br>`challengeeName` (string, optional)<br>`challengeStatus` (string)<br>`maxRange` (number, optional)<br>`challengerNumber` (number, optional)<br>`challengeeNumber` (number, optional) |
-| 4 | `/api/challenges/:id`<br>param: `id`(string, required)                                  | PUT    | <br>Set Game number range for challenge by ID<br>**Prerequisite:**<br> challengeStatus: NEW | `maxRange` (number, required)<br>`challengeeName` (string, required)                                                                     | `id` (string)<br>`challengerId` (string)<br>`challengerName` (string)<br>`challengeeId` (string, optional)<br>`challengeeName` (string, optional)<br>`challengeStatus` (string)<br>`maxRange` (number, optional)<br>`challengerNumber` (number, optional)<br>`challengeeNumber` (number, optional)                         |
-| 5 | `/api/challenges/:id`<br>param: `id`(string, required)                                  | PUT    | Update Challenge by ID<br>**Prerequisite:**<br> challengeStatus: GUESS_TO_BE_SET                                        | `challengeeNumber` (number, required)                      | `id` (string)<br>`challengerId` (string)<br>`challengerName` (string)<br>`challengeeId` (string, optional)<br>`challengeeName` (string, optional)<br>`challengeStatus` (string)<br>`maxRange` (number, optional)<br>`challengerNumber` (number, optional)<br>`challengeeNumber` (number, optional)                         |
-| 6 | `/api/challenges/:id`<br>param: `id`(string, required)                                  | PUT    | Update Challenge by ID  <br>**Prerequisite:**<br> challengeStatus: CHALLENGER_TO_MOVE                                     | `challengerNumber` (number, required)                                                             | `id` (string)<br>`challengerId` (string)<br>`challengerName` (string)<br>`challengeeId` (string, optional)<br>`challengeeName` (string, optional)<br>`challengeStatus` (string)<br>`maxRange` (number, optional)<br>`challengerNumber` (number, optional)<br>`challengeeNumber` (number, optional)                         |
-| 7 | `/api/user`                                            | GET    | Get Currently Logged in User                                                               | -                                                                                                 | `id` (string)<br>`name` (string)                                                                                                                                                                                                                                                                                           |
-
-#### Game Service (Intern)
-
-| #   | Endpoint                                               | Method | Description                                                | Request Body                                                           | Response Body                                                                                                                                                                                                                                          |
-| --- | ------------------------------------------------------ | ------ | ---------------------------------------------------------- | ----------------------------------------------------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1   | `/game`                                                | POST   | Create Challenge                                           | `challenge` (object, required): Challenge object with necessary properties | `id` (string)                                                                                                                                                                                                                                          |
-| 2   | `/game/:id`<br>param: `id`(string, required)           | GET    | Get Challenge by ID                                        | -                                                                     | `id` (string)<br>`challengerId` (string)<br>`challenge` (string)<br>`challengeeId` (string, optional)<br>`challengeStatus` (string)<br>`maxRange` (number, optional)<br>`challengeeNumber` (number, optional)<br>`challengerNumber` (number, optional) |
-| 3   | `/game/:id`<br>param: `id`(string, required)           | PUT    | Set Game number range for challenge by ID<br>**Prerequisite:**<br> challengeStatus: NEW | `maxRange` (number, required)<br>`challengeeName` (string, required)                                         | `id` (string)<br>`challengerId` (string)<br>`challenge` (string)<br>`challengeeId` (string)<br>`challengeStatus` (string)<br>`maxRange` (number)                                                                                                       |
-| 4   | `/game/:id`<br>param: `id`(string, required)           | PUT    | Update Challenge by ID<br>**Prerequisite:**<br> challengeStatus: GUESS_TO_BE_SET | `challengeeNumber` (number, required) | `id` (string)<br>`challengerId` (string)<br>`challenge` (string)<br>`challengeeId` (string)<br>`challengeStatus` (string)<br>`maxRange` (number)<br>`challengeeNumber` (number)                                                                        |
-| 5   | `/game/:id`<br>param: `id`(string, required)           | PUT    | Update Challenge by ID<br>**Prerequisite:**<br> challengeStatus: CHALLENGER_TO_MOVE | `challengerNumber` (number, required)                                 | `id` (string)<br>`challengerId` (string)<br>`challenge` (string)<br>`challengeeId` (string)<br>`challengeStatus` (string)<br>`maxRange` (number)<br>`challengeeNumber` (number)<br>`challengerNumber` (number)                                         |
-
-#### User Service (Intern)
-| #   | Endpoint                  | Method | Description         | Request Body          | Response Body       |
-| --- | ------------------------- | ------ | ------------------- | --------------------- | ------------------- |
-| 1   | `/user`                   | POST   | Create User          | `name` (string, required) | `id` (string)       |
-| 2   | `/user/:id`<br>param: `id`(string, required) | GET    | Get User by ID       | -                     | `id` (string)<br>`name` (string) |
-
+Für die möglichen Requests und Responses zu den entsprechenden Repositories navigieren:
+- Gateway: [wato-gateway](https://github.com/snoozebaumer/wato-gateway#api-documentation)
+- Game Service: [wato-game](https://github.com/snoozebaumer/wato-game#api-documentation)
+- User Service: [wato-user](https://github.com/snoozebaumer/wato-user#api-documentation)
 
 ## Bausteinsicht
 
@@ -162,13 +135,13 @@ Alle Formulareingaben sind required und werden sowohl Client- als auch Serversei
 ### Spielstatusübersicht
 Über den Verlauf des Spiels kann das Spiel in verschiedenen Status sein. Die folgende Tabelle zeigt die verschiedenen Status und die dazugehörigen Aktionen, welche in diesem Status möglich sind.
 
-| Status                  | Beschreibung | Bearbeitbare Felder | Berechtigte Rollen     | Nächster Status         |
-|-------------------------|--------------|----------------------|------------------------|-------------------------|
+| Status                  | Beschreibung                                                                                        | Bearbeitbare Felder | Berechtigte Rollen     | Nächster Status         |
+|-------------------------|-----------------------------------------------------------------------------------------------------|----------------------|------------------------|-------------------------|
 | NEW                     | Challenge mit Herausforderer und Challengebeschreibung erstellt, Zahlenbereich muss noch gesetzt werden | maxRange, challengeeName | alle Personen mit Link | GUESS_TO_BE_SET         |
-| GUESS_TO_BE_SET         | Zahlenbereich gesetzt, Herausgeforderter muss noch Zahl setzen | challengeeNumber | Herausgeforderter      | CHALLENGER_TO_MOVE      |
-| CHALLENGER_TO_MOVE      | Herausgeforderter hat Zahl gesetzt, Herausforderer muss noch Zahl setzen | challengerNumber | Herausforderer         | CHALLENGE_SUCCESS / CHALLENGE_FAILURE      |
-| CHALLENGE_SUCCESS       | Beide Spieler haben die gleiche Zahl genannt | - | alle Personen mit Link | -                       |
-| CHALLENGE_FAILURE       | Beide Spieler haben unterschiedliche Zahlen genannt | - | alle Personen mit Link | -                       |
+| GUESS_TO_BE_SET         | Herausgeforderte Person und Zahlenbereich gesetzt. Herausgeforderter muss noch Zahl setzen | challengeeNumber | Herausgeforderter      | CHALLENGER_TO_MOVE      |
+| CHALLENGER_TO_MOVE      | Herausgeforderter hat Zahl gesetzt, Herausforderer muss noch Zahl setzen                            | challengerNumber | Herausforderer         | CHALLENGE_SUCCESS / CHALLENGE_FAILURE      |
+| CHALLENGE_SUCCESS       | Beide Spieler haben die gleiche Zahl genannt                                                        | - | alle Personen mit Link | -                       |
+| CHALLENGE_FAILURE       | Beide Spieler haben unterschiedliche Zahlen genannt                                                 | - | alle Personen mit Link | -                       |
 
 
 ### Seite aufrufen (Momentanen User laden)
@@ -189,7 +162,7 @@ Falls kein Cookie mit dem Request mitgeschickt wurde, wird vom Frontend eine 404
 Nachdem das Formular zur Erstellung der Challenge ausgefüllt und der "Freund herausfordern"-Knopf gedrückt wurde, wird die Challenge vom ChallengeService mit dem Status NEW an das Gateway gesendet.
 Das Gateway liest das Cookie "id" aus. Falls der User bereits mit der Webseite interagiert hat, wird dieses gesetzt sein. Falls nicht, wird über den wato-user Service ein neuer User angelegt und das Cookie gesetzt.
 Mit der Id des Users als ChallengerId, entweder vom Cookie oder direkt von der Antwort des wato-user Services, wird die Challenge an den wato-game Service weitergeleitet, welcher die Challenge in der Datenbank speichert und die challengeId zurückgibt.
-Die challengeId wird bis zur ChallengeCreationComponent zurückgegeben, welche an die ShareComponent weitergeleitet wird. Die ShareComponent zeigt dem User den URL an, welche er an seinen Freund senden kann.
+Die challengeId wird bis zur ChallengeCreationComponent zurückgegeben, welche mit dieser die ShareComponent aufruft. Die ShareComponent zeigt dem User den URL an, welche dieser an seinen Freund (Herausgeforderte Person) senden kann.
 
 ### Spiel aufrufen
 ![laufzeit-spiel.aufrufen.png](img/laufzeit-spiel-aufrufen.png)
@@ -197,7 +170,7 @@ Die challengeId wird bis zur ChallengeCreationComponent zurückgegeben, welche a
 [Bild in Vollauflösung](img/laufzeit-spiel-aufrufen.png)
 
 Wird /challenge/:id aufgerufen, wird die ChallengeId aus der URL ausgelesen und über ChallengeService an das Gateway weitergeleitet. Das Gateway leitet die Anfrage an den wato-game Service weiter, welcher die Challenge aus der Datenbank lädt und zurückgibt.
-Falls der challengeStatus nicht SUCCESS oder FAILURE ist, also das Spiel nicht fertig ist, wird aus der Challenge die challengerNumber, sowie die challengerNumber, also die Nummern, welche die Spieler wählen, herausgelöscht, um zu verhindern, dass ein Spieler die Zahl eines anderen auslesen kann.
+Falls der challengeStatus nicht SUCCESS oder FAILURE ist, also das Spiel nicht fertig ist, wird aus der Challenge die challengerNumber, sowie die challengeeNumber, also die Nummern, welche die Spieler wählen, herausgelöscht, um zu verhindern, dass ein Spieler die Zahl eines anderen auslesen kann.
 Danach werden anhand der Ids die Namen der Spieler geladen und die Challenge an den ChallengeService zurückgegeben, welcher sie an die ChallengeDetailComponent weiterleitet.
 Schliesslich prüft die ChallengeDetailComponent, ob der momentane User überhaupt berechtigt ist, die Challenge beim momentanen ChallengeStatus zu sehen. Falls nicht, wird auf die ShareComponent mit der Id des Spiels weitergeleitet.
 Zur Vereinfachung im Diagramm nicht abgebildet, da nicht wesentlich, wird am Schluss, falls die Challenge den Status NEW hat noch der User aus dem UserService geladen, um den Namen der Herausgeforderten Person im Formular bereits zu setzen. Dies nur, falls der User bereits mit der Webseite interagiert hat.
@@ -254,11 +227,11 @@ Folgende Sprachen / Dialekte werden unterstützt:
 - Englisch (en, en-US)
 
 ### Teststrategie
-Die zwei Hauptkomponenten des Frontends challenge-creation und challenge-detail werden ausführlich automatisiert getestet.
+Die Hauptkomponenten des Frontends challenge-creation und challenge-detail, sowie die AppComponent werden ausführlich automatisiert getestet.
 Die Services des Frontends (challenge.service.ts und user.service.ts) werden nicht getestet, da sie nur als Schnittstelle dienen und selbst keine Logik enthalten. 
 Da die Applikation nicht fertiggestellt werden würde, wird aus Zeitgründen auf e2e-Tests verzichtet und auf manuelle Systemtests gesetzt.
 Der Aufwand der Wissensbeschaffung wäre zu hoch und entspricht nicht dem eher tiefen Schadenspotenzial eines Fehlers in der Applikation.
-Wichtig ist, dass jedes Akzeptanzkriterium mit mindestens einem manuellen Testschritt abgedeckt ist. Sollte ein Fehler auftreten, wird dieser behoben und das Akzeptanzkriterium erneut getestet.
+Für die Manuellen Tests muss jedes Akzeptanzkriterium mit mindestens einem manuellen Testschritt abgedeckt sein. Sollte ein Fehler auftreten, wird dieser behoben und das Akzeptanzkriterium erneut getestet.
 
 #### Testprotokoll
 Für Testprotokoll siehe [testprotokoll.md](testprotokoll.md).
@@ -288,15 +261,16 @@ MongoDB wurde gewählt, da es mit Node.js gut funktioniert: Ich kann JSON-Objekt
 ### Microservice-Architektur
 Die Microservice-Architektur wurde gewählt, um mehr Erfahrung mit dieser zu sammeln. Ein Vorteil, der nach der Umsetzung auffällt, ist, dass es zum Teil gar nicht auffällt, wenn der UserService nicht läuft. Bei einer Monolith-Architektur wäre entweder die ganze Applikation online oder down.
 
+Trotzdem wäre in der Praxis bei diesem Beispiel eine Microservice-Architektur wenig sinnig: Der Kern der Applikation ist der Game-Service. Läuft dieser nicht, kann die ganze Applikation nicht sinnvoll gebraucht werden. Auch eine Client-Server-Anwendung hätte es hier getan und wäre mit Loadbalancing ebenfalls skalierbar gewesen.
+
 ## Qualitätsanforderungen
-| # | Qualitätsanforderung | Beschreibung                                                                                                                                                                                                             | Massnahmen               |
-|---|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| 1 | Performance          | "What are the Odds" soll innert 1s geladen werden.                                                                                                                                                                       | - (bereits erreicht)     |
-| 2 | Skalierbarkeit       | Die Applikation soll auf 1000 Benutzer skalierbar sein.                                                                                                                                                                  | Microservice-Architektur |
-| 3 | Usability            | Es wird erwartet, dass die Spiel-URLs oft per Mobile Chat versendet werden. Das Produkt soll also sowohl für die Desktop- als auch für die mobile Anzeige optimiert sein.                                                | Responsive Design        |
-| 4 | Sicherheit           | Die Spielstatusänderungen, sowie die Spiel-ID sollen gemeinsam mit der «verursachenden» IP und einem Timestamp geloggt werden. Dies zur Ermöglichung einer zukünftigen Datenanalyse oder Verhinderung einer Spamattacke. | Logging im Backend       |
+| # | Qualitätsanforderung | Beschreibung                                                                                                                                                                                                             | Massnahmen                    |
+|---|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|
+| 1 | Performance          | "What are the Odds" soll innert 1s geladen werden.                                                                                                                                                                       | - (bereits erreicht)          |
+| 2 | Skalierbarkeit       | Die Applikation soll auf 1000 Benutzer skalierbar sein.                                                                                                                                                                  | (Microservice-Architektur)    |
+| 3 | Usability            | Es wird erwartet, dass die Spiel-URLs oft per Mobile Chat versendet werden. Das Produkt soll also sowohl für die Desktop- als auch für die mobile Anzeige optimiert sein.                                                | Responsive Design             |
+| 4 | Sicherheit           | Die Spielstatusänderungen, sowie die Spiel-ID sollen gemeinsam mit der «verursachenden» IP und einem Timestamp geloggt werden. Dies zur Ermöglichung einer zukünftigen Datenanalyse oder Verhinderung einer Spamattacke. | Logging ins stdout im Backend |
 
 ## Technische Schulden und Risiken
 - Die Endpunkte in wato-gateway und wato-game sind als Ergebnis des Zeitmangels lange und unübersichtlich. Dies führt zu einer unwartbaren Applikation, welche schwer zu erweitern ist und möglicherweise Fehler enthält.
 -> refactoring
-- Die Applikation prüft nur clientseitig, ob der Benutzer zu einer Aktion berechtigt ist. Ein Angreifer könnte also die Applikation manipulieren und so beispielsweise die Zahl des Herausgeforderten setzen. Da es sich hierbei um ein Spiel und keine E-Banking-Applikation handelt, ist das Risiko jedoch geringer. Die serverseitige Prüfung könnte in Zukunft noch implementiert werden.

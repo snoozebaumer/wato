@@ -7,7 +7,23 @@ ___
 **Organisation**: HSLU - Hochschule Luzern
 
 **Semester**: HS23
+
+**Vorlesung**: WEBLAB
 ___
+
+## Gesamtbilanz
+Ich habe fürs Projekt ohne Aufwand für die Präsentation 80h 45 min aufgewendet. Dabei wurde die Zeit in etwa folgendermassen aufgeteilt:
+
+| | Aktivität                                            | Zeit          |
+|---|------------------------------------------------------|---------------|
+| | Anforderungsdefinition                               | 8h            |
+| | Aufsetzen des Projekts                               | 3h 45min      |
+| | Umsetzung                                            | 40h           |
+| | Dokumentation / Fazit & Reflexion                    | 16h           |
+| | Testing (Testdefinition, -ausführung)                | 9h            |
+| | Zusätzliche Recherchen (Angular Animations, Routing) | 4h            |
+| | **Total**                                            | **80h 45min** |
+
 
 ## Tag 1 - 05.02.2024
 Am ersten Blockwochentag wird das Standardprojekt, welches nach der BW umzusetzen
@@ -55,7 +71,7 @@ ich ein eigenes Projekt.
 
 **Nächste Schritte:**
 - Serverkomponenten erstellen (Gateway, Game-Service, User-Service) und Formulardaten an den Server senden
-- (Story 2) Routing implementieren, es soll über Routing zum nächsten Schritt gewechselt werden können (inkl. Animation: [Route Animation](https://angular.io/guide/route-animations))
+- (Story 2) Routing implementieren, es soll über Routing zum nächsten Schritt gewechselt werden können (möglicherweise inkl. Animation: [Route Animation](https://angular.io/guide/route-animations))
 
 ## Tag 5 - 13.02.2024
 Ich rechne damit, dass mir genügend Zeit zur Verfügung steht, die Anforderungen zu erfüllen. 

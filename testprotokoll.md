@@ -14,13 +14,13 @@ ___
 Das Testprotokoll dient dazu, die Funktionalität des Spiels WATO zusätzlich zu den automatisierten Tests manuell zu überprüfen.
 Als Basis der Tests dienen die Akzeptanzkriterien, welche in jeder Story definiert wurden. So wird mit positivem Abschluss der Test auch gleich die Erfüllung dieser Kriterien bewiesen.
 Wie bereits in der [Teststrategie](readme.md#teststrategie) erwähnt, soll jedes Akzeptanzkriterium mit mindestens einem Testschritt abgedeckt sein. Bei Akzeptanzkriterien, welche sich in ihrer Funktionalität nicht unterscheiden, wird ein Testfall für mehrere Kriterien erstellt.
-Dabei werden jedoch alle Kriterien abgedeckt, falls nicht anders dokumentiert (s. [Fazit / Reflexion](fazit-reflexion.md)).
+Dabei werden alle Kriterien abgedeckt, falls nicht anders dokumentiert (s. [Fazit / Reflexion > Abgeänderte Anforderungen](fazit-reflexion.md#abgeänderte-anforderungen)).
 
 ## 2. Testfälle
 ### Vorbedingungen vor jedem Testfall
 - Das Backend ist gestartet.
 - Die Browsersprache ist, falls nicht anders erwähnt, auf Englisch eingestellt.
-- Cookies sind gelöscht ist aktiviert.
+- Cookies sind gelöscht.
 - Die Startseite des Spiels ist aufgerufen (Lokal: http://localhost:4200).
 
 Letzter Stand: 2024-02-27
@@ -53,7 +53,7 @@ Hier werden folgende Akzeptanzkriterien getestet:
   Spieler A erstellt und gesendet wurde, im Browser.
 - Das Spiel zeigt den momentanen Spielstand an.
 
-Für ausgeschlossene Akzeptanzkriterien siehe [Fazit / Reflexion](fazit-reflexion.md). 
+Für ausgeschlossene Akzeptanzkriterien siehe [Fazit / Reflexion > Abgeänderte Anfroderungen](fazit-reflexion.md#abgeänderte-anforderungen). 
 
 | # | Testfall                                                                                                                                                                          | Erwartetes Ergebnis                                                                                                                                                                                                                                                                                                                                                         | Tatsächliches Ergebnis                                                                                                                                                                                                                                                                                                                                                                     | Erfüllt | Visum |
 |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|-------|
