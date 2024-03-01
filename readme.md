@@ -26,18 +26,18 @@ Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbe
    1. [Ablauf](#ablauf)
 2. [Lösungsstrategie](#lösungsstrategie)
 3. [API-Dokumentation](#api-dokumentation)
-3. [Bausteinsicht](#bausteinsicht)
+4. [Bausteinsicht](#bausteinsicht)
    1. [Ebene 1](#ebene-1)
    2. [Ebene 2](#ebene-2)
    3. [Ebene 3](#ebene-3)
-3. [Laufzeitsicht](#laufzeitsicht).
+5. [Laufzeitsicht](#laufzeitsicht).
    1. [Spielstatusübersicht](#spielstatusübersicht)
    2. [Seite aufrufen (Momentanen User laden)](#seite-aufrufen-momentanen-user-laden)
-   2. [Spiel erstellen](#spiel-erstellen)
-   2. [Spiel aufrufen](#spiel-aufrufen)
-   3. [Spielbereich bestimmen](#spielbereich-bestimmen)
-   4. [Zahl auswählen](#zahl-auswählen)
-   5. [Spiel fertigstellen](#spiel-fertigstellen)
+   3. [Spiel erstellen](#spiel-erstellen)
+   4. [Spiel aufrufen](#spiel-aufrufen)
+   5. [Spielbereich bestimmen](#spielbereich-bestimmen)
+   6. [Zahl auswählen](#zahl-auswählen)
+   7. [Spiel fertigstellen](#spiel-fertigstellen)
 6. [Verteilung](#verteilung)
 7. [Querschnittliche Konzepte](#querschnittliche-konzepte)
    1. [Internationalisierung i18n](#internationalisierung-i18n)
@@ -46,22 +46,24 @@ Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbe
    4. [Sessionhandling](#sessionhandling)
    5. [Skalierung](#skalierung)
    6. [Logging](#logging)
-7. [Entwurfsentscheidungen](#entwurfsentscheidungen)
+8. [Entwurfsentscheidungen](#entwurfsentscheidungen)
    1. [Technologien](#technologien)
    2. [Microservice-Architektur](#microservice-architektur)
-3. [Qualitätsanforderungen](#qualitätsanforderungen)
-4. [Technische Schulden und Risiken](#technische-schulden-und-risiken)
+9. [Qualitätsanforderungen](#qualitätsanforderungen)
+10. [Technische Schulden und Risiken](#technische-schulden-und-risiken)
 
 
 ## Einleitung und Zielsetzung
 ![wato-start-screen.png](img/wato-start-screen.png)
 
-WATO setzt das Spiel [**What are the Odds?**](https://www.wikihow.com/Play-What-Are-the-Odds), zu Deutsch **Was sind die Chancen?**, oder in meinem Umfeld unter **Eis zu wievill?** bekannt, um. Das Spiel ist ein Partyspiel, bei dem zwei Spieler gegeneinander antreten.
+WATO setzt das Spiel [**What are the Odds?**](https://www.wikihow.com/Play-What-Are-the-Odds), zu Deutsch **Was sind die Chancen?**, oder in meinem Umfeld unter **Eis zu wievill?** bekannt, um und ist auf Englisch, Deutsch und Schweizerdeutsch verfügbar. Das Spiel ist ein Partyspiel, bei dem zwei Spieler gegeneinander antreten.
 Ein Spieler stellt dem anderen eine Aufgabe. Der Herausgeforderte gibt anhand seiner Bereitschaft, die Aufgabe zu erfüllen, eine Wahrscheinlichkeit an (Bsp. 1/100). Innerhalb dieses Wahrscheinlichkeitsbereichs
 (Bsp. 1-100) nennen anschliessend beide Spieler gleichzeitig eine Zahl. Nennen Sie die gleiche Zahl, so muss der Herausgeforderte die Aufgabe erfüllen. Nennen sie unterschiedliche Zahlen, passiert nichts.
 
 Da die Zahlen gleichzeitig genannt werden, ist das Spiel online nicht ohne weiteres spielbar. Deshalb wird eine Webapplikation entwickelt, welche das Spiel asynchron ermöglicht.
 Dabei soll es für einen Spieler nicht möglich sein, die Zahl, die das gegenüber genannt hat, zu sehen, bevor er seine eigene genannt hat.
+
+Die Projektidee wurde inspiriert durch [EisZu](https://capso-789ce.web.app/) von [Jonas Wyss](https://github.com/jonas99y/).
 
 ### Ablauf
 Der generelle (vereinfachte) Ablauf des asynchronen Spiels sollte folgendermassen aussehen:
