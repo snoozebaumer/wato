@@ -56,7 +56,7 @@ Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbe
 ## Einleitung und Zielsetzung
 ![wato-start-screen.png](img/wato-start-screen.png)
 
-WATO setzt das Spiel [**What are the Odds?**](https://www.wikihow.com/Play-What-Are-the-Odds), zu Deutsch **Was sind die Chancen?**, oder in meinem Umfeld unter **Eis zu wievill?** bekannt, um und ist auf Englisch, Deutsch und Schweizerdeutsch verfügbar. Das Spiel ist ein Partyspiel, bei dem zwei Spieler gegeneinander antreten.
+WATO setzt das Spiel [**What are the Odds?**](https://www.wikihow.com/Play-What-Are-the-Odds), zu Deutsch **Was sind die Chancen?**, oder in meinem Umfeld unter **Eis zu wievill?** bekannt, um. Die Webapp ist je nach Browsereinstellungen auf Englisch, Deutsch und Schweizerdeutsch verfügbar. Das Spiel ist ein Partyspiel, bei dem zwei Spieler gegeneinander antreten.
 Ein Spieler stellt dem anderen eine Aufgabe. Der Herausgeforderte gibt anhand seiner Bereitschaft, die Aufgabe zu erfüllen, eine Wahrscheinlichkeit an (Bsp. 1/100). Innerhalb dieses Wahrscheinlichkeitsbereichs
 (Bsp. 1-100) nennen anschliessend beide Spieler gleichzeitig eine Zahl. Nennen Sie die gleiche Zahl, so muss der Herausgeforderte die Aufgabe erfüllen. Nennen sie unterschiedliche Zahlen, passiert nichts.
 
