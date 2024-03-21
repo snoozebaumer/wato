@@ -13,7 +13,7 @@ ___
 ## 1. Einleitung
 Das Testprotokoll dient dazu, die Funktionalität des Spiels WATO zusätzlich zu den automatisierten Tests manuell zu überprüfen.
 Als Basis der Tests dienen die Akzeptanzkriterien, welche in jeder Story definiert wurden. So wird mit positivem Abschluss der Test auch gleich die Erfüllung dieser Kriterien bewiesen.
-Wie bereits in der [Teststrategie](readme.md#teststrategie) erwähnt, soll jedes Akzeptanzkriterium mit mindestens einem Testschritt abgedeckt sein. Bei Akzeptanzkriterien, welche sich in ihrer Funktionalität nicht unterscheiden, wird ein Testfall für mehrere Kriterien erstellt.
+Wie bereits in der [Teststrategie](../readme.md#teststrategie) erwähnt, soll jedes Akzeptanzkriterium mit mindestens einem Testschritt abgedeckt sein. Bei Akzeptanzkriterien, welche sich in ihrer Funktionalität nicht unterscheiden, wird ein Testfall für mehrere Kriterien erstellt.
 Dabei werden alle Kriterien abgedeckt, falls nicht anders dokumentiert (s. [Fazit / Reflexion > Abgeänderte Anforderungen](fazit-reflexion.md#abgeänderte-anforderungen)).
 
 ## 2. Testfälle
