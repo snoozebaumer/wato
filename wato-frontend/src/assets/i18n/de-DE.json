@@ -1,0 +1,29 @@
+{
+  "MAIN": {
+    "TITLE": "Was sind die Chancen?"
+  },
+  "GAME": {
+    "CHALLENGE_TITLE": "Was sind die Chancen, ",
+    "CHALLENGE_PLACEHOLDER": "dass du mir ein Bier zahlst?",
+    "CHALLENGER": "Herausforderer",
+    "CHALLENGEE": "Herausgefordert",
+    "CHALLENGER_PLACEHOLDER": "Mein Name",
+    "CHALLENGE_BUTTON": "Jemanden herausfordern!",
+    "NEW_TITLE": "Du wurdest von {{value}} herausgefordert!",
+    "GUESS_TO_BE_SET_TITLE": "Die Chancen sind 1:{{value}}! Gib deine Glückszahl ein!",
+    "CHALLENGER_TO_MOVE_TITLE": "Die Chancen sind 1:{{value}}! Gib deine Glückszahl ein!",
+    "FINISHED_SUCCESSFULLY_TITLE": "It's happening!",
+    "FINISHED_NOTHING_HAPPENS_TITLE": "Schade, es passiert nichts.",
+    "RANGE": "Zahlenbereich - Von 1 bis",
+    "RANGE_PLACEHOLDER": "10",
+    "CONTINUE_BUTTON": "Weiter",
+    "ERROR_REQUIRED_INPUTS": "Fülle bitte alle Felder aus.",
+    "ERROR_RESPECT_RANGE": "Bitte wähle eine Zahl im definierten Bereich aus.",
+    "NUMBER": "Deine gewünschte Zahl",
+    "ODDS": "Chancen"
+  },
+  "SHARE": {
+    "DESCRIPTION": "Jetzt ist dein*e Freund*in dran. Teile den Link!",
+    "BUTTON": "Link kopieren"
+  }
+}

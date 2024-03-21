@@ -12,7 +12,7 @@ ___
 
 
 ## Fazit zum Aufwand
-Siehe [Arbeitsjournal](./arbeitsjournal.md) für detaillierte Aufwandangaben.
+Siehe [Arbeitsjournal](arbeitsjournal.md) für detaillierte Aufwandangaben.
 
 Ich habe für das Projekt rund 20h mehr Zeit aufgewendet, als in den Projektanforderungen bestimmt war. Dies hat mehrere mögliche Gründe:
 - Ich hatte die Projektidee selbst definiert, habe so mehr Zeit in die Anforderungsdefinition investiert, als ich es bei einem vorgegebenen Projekt getan hätte. Zudem hatte ich dadurch, dass es ein persönliches Projekt war, höhere Ansprüche an die Umsetzung.
@@ -25,7 +25,7 @@ Schlussendlich habe ich die Komponenten (app, challenge-creation, challenge-deta
 
 
 ## Fazit zum erstellten Produkt
-Das erstellte Spiel erfüllt laut [Testprotokoll](./testprotokoll.md) alle Anforderungen ausser einer, die leicht angepasst wurde (s. unten).
+Das erstellte Spiel erfüllt laut [Testprotokoll](testprotokoll.md) alle Anforderungen ausser einer, die leicht angepasst wurde (s. unten).
 Im kleinen Kreis würde ich das Produkt so einsetzen, müsste es jedoch für den produktiven Einsatz für eine grössere Anzahl an Benutzern noch anpassen.
 
 Trotzdem fallen mir während der Umsetzung und des Testens einige Punkte auf, welche ich gerne noch verbessert hätte:
@@ -35,7 +35,7 @@ Ich würde dies mit einem Ladeindikator, falls noch keine Challenge geladen wurd
 - Das Spiel wird nie erklärt. Es wird davon ausgegangen, dass der Spieler das Spiel bereits kennt. Ich würde eine kurze Erklärung des Spiels in die Challenge-Create-Component einbauen.
 - Meine PUT-Requests sind nicht idempotent. Ich würde diese noch auf PATCH-Requests umstellen.
 - Die Applikation prüft nur clientseitig, ob der Benutzer zu einer Aktion berechtigt ist. Ein Angreifer könnte also die Applikation manipulieren und so beispielsweise die Zahl des Herausgeforderten setzen. Da es sich hierbei um ein Spiel und keine E-Banking-Applikation handelt, ist das Risiko jedoch geringer. Die serverseitige Prüfung könnte in Zukunft noch implementiert werden.
-- Langer, undokumentierter Code: siehe [Projektdokumentation > Technische Schulden](./readme.md#technische-schulden-und-risiken)
+- Langer, undokumentierter Code: siehe [Projektdokumentation > Technische Schulden](../readme.md#technische-schulden-und-risiken)
 
 
 ### Abgeänderte Anforderungen

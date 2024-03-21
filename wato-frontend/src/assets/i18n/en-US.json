@@ -1,0 +1,29 @@
+{
+  "MAIN": {
+    "TITLE": "What are the odds?"
+  },
+  "GAME" : {
+    "CHALLENGE_TITLE": "What are the odds...",
+    "CHALLENGE_PLACEHOLDER": "you buy me a beer?",
+    "CHALLENGER":  "Challenger",
+    "CHALLENGEE": "Challengee",
+    "CHALLENGER_PLACEHOLDER": "My name",
+    "CHALLENGE_BUTTON": "Challenge a friend!",
+    "NEW_TITLE": "You've been challenged by {{value}}!",
+    "GUESS_TO_BE_SET_TITLE": "The odds are 1 in {{value}}! Enter your lucky number!",
+    "CHALLENGER_TO_MOVE_TITLE": "The odds are 1 in {{value}}! Enter your lucky number!",
+    "FINISHED_SUCCESSFULLY_TITLE": "It's happening!",
+    "FINISHED_NOTHING_HAPPENS_TITLE": "Oh no! Nothing happens.",
+    "RANGE": "Your desired range, From 1 to",
+    "RANGE_PLACEHOLDER": "10",
+    "CONTINUE_BUTTON": "Continue",
+    "ERROR_REQUIRED_INPUTS": "Please fill in all fields.",
+    "ERROR_RESPECT_RANGE": "Please choose a number in the defined range.",
+    "NUMBER": "Your lucky number",
+    "ODDS": "Odds"
+  },
+  "SHARE": {
+    "DESCRIPTION": "Now it's your friends turn. Share the URL below to continue the game!",
+    "BUTTON": "Copy URL"
+  }
+}

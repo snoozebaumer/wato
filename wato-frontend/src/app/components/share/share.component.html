@@ -1,0 +1,5 @@
+<div>
+  <p>{{"SHARE.DESCRIPTION" | translate}}</p>
+  <input readonly type="text" [value]="window.location.origin + '/challenge/' + id">
+  <button [cdkCopyToClipboard]="window.location.origin + '/challenge/' + id" >{{"SHARE.BUTTON" | translate}}</button>
+</div>

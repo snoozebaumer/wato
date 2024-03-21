@@ -1,0 +1,11 @@
+<form (ngSubmit)="create(challenge.value, challengerName.value)" class="challengeForm">
+  <div>
+    <label for="challenge">{{ "GAME.CHALLENGE_TITLE" | translate }}</label>
+    <input required [placeholder]="'GAME.CHALLENGE_PLACEHOLDER' | translate" #challenge id="challenge"/>
+    <label for="name">{{"GAME.CHALLENGER" | translate}}</label>
+    <input required [placeholder]="'GAME.CHALLENGER_PLACEHOLDER' | translate" [disabled]="userService.user" [value]="userService.user?.name" #challengerName id="name"/>
+  </div>
+  <button type="submit" >{{'GAME.CHALLENGE_BUTTON' | translate}}</button>
+</form>
+
+<div *ngIf="formError" class="error">{{formError | translate}}</div>

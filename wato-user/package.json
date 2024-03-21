@@ -1,0 +1,30 @@
+{
+  "name": "wato-user",
+  "version": "1.0.0",
+  "description": "User microservice for \"What are the Odds?\", keeping track of users and their names. This service does not contain any auth functionality.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snoozebaumer/wato-user.git"
+  },
+  "keywords": [
+    "wato"
+  ],
+  "author": "Samuel Nussbaumer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snoozebaumer/wato-user/issues"
+  },
+  "homepage": "https://github.com/snoozebaumer/wato-user#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "log-timestamp": "^0.3.0"
+  }
+}

@@ -1,0 +1,55 @@
+<ng-container *ngIf="challenge.id !== ''">
+  <h2>{{ "GAME.CHALLENGE_TITLE" | translate }} {{ challenge.challenge }}</h2>
+  <p>{{ $any(challenge.challengeStatus) | translate: {"value": challenge.challengeStatus !== ChallengeStatus.NEW ? challenge.maxRange : challenge.challengerName} }}</p>
+  <form *ngIf="challenge.challengeStatus === ChallengeStatus.NEW" (ngSubmit)="setRange()"
+        class="challengeForm">
+    <div>
+      <label for="range">{{ "GAME.RANGE" | translate }}</label>
+      <input type="number" [(ngModel)]="challenge.maxRange" required
+             [placeholder]="'GAME.RANGE_PLACEHOLDER' | translate" name="range" id="range"/>
+      <label for="name">{{ 'GAME.CHALLENGER_PLACEHOLDER' | translate }}</label>
+      <input id="name" name="challengeeName" [disabled]="!!userService.user" [(ngModel)]="challenge.challengeeName"
+             required placeholder="Hans"/>
+    </div>
+    <button type="submit">{{ 'GAME.CONTINUE_BUTTON' | translate }}</button>
+  </form>
+
+  <form *ngIf="challenge.challengeStatus === ChallengeStatus.GUESS_TO_BE_SET" (ngSubmit)="setChallengeeGuess()">
+    <div>
+      <label for="challengeeNumber">{{ 'GAME.NUMBER' | translate }}</label>
+      <input type="number" min="1" [max]="challenge.maxRange!" [(ngModel)]="challenge.challengeeNumber" required
+             name="number" id="challengeeNumber"/>
+    </div>
+    <button type="submit">{{ 'GAME.CONTINUE_BUTTON' | translate }}</button>
+  </form>
+
+  <form *ngIf="challenge.challengeStatus === ChallengeStatus.CHALLENGER_TO_MOVE" (ngSubmit)="setChallengerGuess()">
+    <div>
+      <label for="challengerNumber">{{ 'GAME.NUMBER' | translate }}</label>
+      <input type="number" min="1" [max]="challenge.maxRange!" [(ngModel)]="challenge.challengerNumber" required
+             name="number" id="challengerNumber"/>
+    </div>
+    <button type="submit">{{ 'GAME.CONTINUE_BUTTON' | translate }}</button>
+  </form>
+
+  <div
+    *ngIf="challenge.challengeStatus === ChallengeStatus.FAILURE || challenge.challengeStatus === ChallengeStatus.SUCCESS">
+    <h3>{{ 'GAME.ODDS' | translate }}: 1 / {{ challenge.maxRange }}</h3>
+    <div class="guess-container">
+      <div class="guess">
+        <div class="player">{{ challenge.challengeeName }}
+          <span class="roleLabel">{{ 'GAME.CHALLENGEE' | translate | uppercase }}</span>
+        </div>
+        <div class="guess">{{ challenge.challengeeNumber }}</div>
+      </div>
+      <div class="guess">
+        <div class="player">{{ challenge.challengerName }} <span
+          class="roleLabel">{{ 'GAME.CHALLENGER' | translate | uppercase }}</span></div>
+        <div class="guess">{{ challenge.challengerNumber }}</div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<div *ngIf="formError" class="error">{{ formError | translate }}</div>
+

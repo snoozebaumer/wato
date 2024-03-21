@@ -1,29 +1,26 @@
-# Architekturdokumentation WATO
+# What are the Odds?
+## Einleitung
+![wato-start-screen.png](docs/img/wato-start-screen.png)
 
-___
-**Projektname**: WATO - What are the Odds
+WATO setzt das Spiel [**What are the Odds?**](https://www.wikihow.com/Play-What-Are-the-Odds), zu Deutsch **Was sind die Chancen?**, oder in meinem Umfeld unter **Eis zu wievill?** bekannt, um. Die Webapp ist je nach Browsereinstellungen auf Englisch, Deutsch und Schweizerdeutsch verfügbar. Das Spiel ist ein Partyspiel, bei dem zwei Spieler gegeneinander antreten.
+Ein Spieler stellt dem anderen eine Aufgabe. Der Herausgeforderte gibt anhand seiner Bereitschaft, die Aufgabe zu erfüllen, eine Wahrscheinlichkeit an (Bsp. 1/100). Innerhalb dieses Wahrscheinlichkeitsbereichs
+(Bsp. 1-100) nennen anschliessend beide Spieler gleichzeitig eine Zahl. Nennen Sie die gleiche Zahl, so muss der Herausgeforderte die Aufgabe erfüllen. Nennen sie unterschiedliche Zahlen, passiert nichts.
 
-**Autor**: Samuel Nussbaumer
+Da die Zahlen gleichzeitig genannt werden, ist das Spiel online nicht ohne weiteres spielbar. Deshalb wird eine Webapplikation entwickelt, welche das Spiel asynchron ermöglicht.
+Dabei soll es für einen Spieler nicht möglich sein, die Zahl, die das gegenüber genannt hat, zu sehen, bevor er seine eigene genannt hat.
 
-**Organisation**: HSLU - Hochschule Luzern
-
-**Semester**: HS23
-___
-
-Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbeitsjournal siehe [arbeitsjournal.md](arbeitsjournal.md).
-
+Die Projektidee wurde inspiriert durch [EisZu](https://capso-789ce.web.app/) von [Jonas Wyss](https://github.com/jonas99y/).
 
 ## Bestandteile der Software
 
-- Frontend: [wato-frontend](https://github.com/snoozebaumer/wato-frontend)
+- Frontend: [wato-frontend](wato-frontend)
 - Backend:
-  - Gateway: [wato-gateway](https://github.com/snoozebaumer/wato-gateway)
-  - Game Service: [wato-game](https://github.com/snoozebaumer/wato-game)
-  - User Service: [wato-user](https://github.com/snoozebaumer/wato-user)
+  - Gateway: [wato-gateway](wato-gateway)
+  - Game Service: [wato-game](wato-game)
+  - User Service: [wato-user](wato-user)
 
 ## Inhaltsverzeichnis
-1. [Einleitung und Zielsetzung](#einleitung-und-zielsetzung)
-   1. [Ablauf](#ablauf)
+1. [Ablauf](#ablauf)
 2. [Lösungsstrategie](#lösungsstrategie)
 3. [API-Dokumentation](#api-dokumentation)
 4. [Bausteinsicht](#bausteinsicht)
@@ -52,30 +49,17 @@ Für Fazit & Reflexion siehe [fazit-reflexion.md](fazit-reflexion.md). Für Arbe
 9. [Qualitätsanforderungen](#qualitätsanforderungen)
 10. [Technische Schulden und Risiken](#technische-schulden-und-risiken)
 
-
-## Einleitung und Zielsetzung
-![wato-start-screen.png](img/wato-start-screen.png)
-
-WATO setzt das Spiel [**What are the Odds?**](https://www.wikihow.com/Play-What-Are-the-Odds), zu Deutsch **Was sind die Chancen?**, oder in meinem Umfeld unter **Eis zu wievill?** bekannt, um. Die Webapp ist je nach Browsereinstellungen auf Englisch, Deutsch und Schweizerdeutsch verfügbar. Das Spiel ist ein Partyspiel, bei dem zwei Spieler gegeneinander antreten.
-Ein Spieler stellt dem anderen eine Aufgabe. Der Herausgeforderte gibt anhand seiner Bereitschaft, die Aufgabe zu erfüllen, eine Wahrscheinlichkeit an (Bsp. 1/100). Innerhalb dieses Wahrscheinlichkeitsbereichs
-(Bsp. 1-100) nennen anschliessend beide Spieler gleichzeitig eine Zahl. Nennen Sie die gleiche Zahl, so muss der Herausgeforderte die Aufgabe erfüllen. Nennen sie unterschiedliche Zahlen, passiert nichts.
-
-Da die Zahlen gleichzeitig genannt werden, ist das Spiel online nicht ohne weiteres spielbar. Deshalb wird eine Webapplikation entwickelt, welche das Spiel asynchron ermöglicht.
-Dabei soll es für einen Spieler nicht möglich sein, die Zahl, die das gegenüber genannt hat, zu sehen, bevor er seine eigene genannt hat.
-
-Die Projektidee wurde inspiriert durch [EisZu](https://capso-789ce.web.app/) von [Jonas Wyss](https://github.com/jonas99y/).
-
-### Ablauf
+## Ablauf
 Der generelle (vereinfachte) Ablauf des asynchronen Spiels sollte folgendermassen aussehen:
-![wato-ablauf.png](img/wato-ablauf.png)
+![wato-ablauf.png](docs/img/wato-ablauf.png)
 
-[Bild in Vollauflösung](img/wato-ablauf.png)
+[Bild in Vollauflösung](docs/img/wato-ablauf.png)
 
 ## Lösungsstrategie
 
-![wato-components.png](img/wato-components.png)
+![wato-components.png](docs/img/wato-components.png)
 
-[Bild in Vollauflösung](img/wato-components.png)
+[Bild in Vollauflösung](docs/img/wato-components.png)
 
 Die Webapplikation besteht aus einem Frontend und einem Backend. 
 - Das Frontend ist in Angular umgesetzt, das Backend in Node.js.
@@ -87,25 +71,25 @@ Dies bewirkt, dass die Microservices so in ihrer Technologie offen sind, sie kö
 ### API-Dokumentation
 
 Für die möglichen Requests und Responses zu den entsprechenden Repositories navigieren:
-- Gateway: [wato-gateway](https://github.com/snoozebaumer/wato-gateway#api-documentation)
-- Game Service: [wato-game](https://github.com/snoozebaumer/wato-game#api-documentation)
-- User Service: [wato-user](https://github.com/snoozebaumer/wato-user#api-documentation)
+- Gateway: [wato-gateway](wato-gateway/README.md#api-documentation)
+- Game Service: [wato-game](wato-game/README.md#api-documentation)
+- User Service: [wato-user](wato-user/README.md#api-documentation)
 
 ## Bausteinsicht
 
 ### Ebene 1
 In Ebene 1 wird die Kommunikation zwischen Frontend und Backend dargestellt. Das Backend wird dabei als Blackbox betrachtet.
-![ebene-1.png](img/ebene-1.png)
+![ebene-1.png](docs/img/ebene-1.png)
 
-[Bild in Vollauflösung](img/ebene-1.png)
+[Bild in Vollauflösung](docs/img/ebene-1.png)
 
 Der Benutzer interagiert mit dem Frontend. Füllt der Benutzer ein Formular aus und sendet es ab, wird das Update an das Backend gesendet.
 Das Backend verarbeitet die Anfrage und gibt das Resultat zurück. Das Frontend zeigt das Resultat an.
 ### Ebene 2
 In Ebene 2 wird das gesamte Backend in seine Bestandteile aufgeteilt. Das Gateway ist die einzige Schnittstelle zum Frontend.
-![ebene-2.png](img/ebene-2.png)
+![ebene-2.png](docs/img/ebene-2.png)
 
-[Bild in Vollauflösung](img/ebene-2.png)
+[Bild in Vollauflösung](docs/img/ebene-2.png)
 
 Der User kommuniziert über Interaktionen mit dem Frontend (Formular ausfüllen / Challenge aufrufen) mit dem Gateway. Das Gateway leitet die Anfrage an die entsprechenden Microservices weiter. Die Microservices verarbeiten die Anfrage und geben das Resultat zurück. Das Gateway leitet das Resultat an das Frontend weiter.
 Für genauere Informationen dazu, welche Requests bei welchen Systemen aufrufbar sind, siehe [API-Dokumentation](#api-dokumentation).
@@ -113,19 +97,19 @@ Für genauere Informationen dazu, welche Requests bei welchen Systemen aufrufbar
 In Ebene 3 werden die konkreten Endpunkte, welche aufgerufen werden, dargestellt. Dabei teilen wir in die Requests auf das Gateay und die Requests auf die Microservices auf.
 
 #### Frontend
-![ebene-3-frontend.png](img/ebene-3-frontend.png)
+![ebene-3-frontend.png](docs/img/ebene-3-frontend.png)
 
-[Bild in Vollauflösung](img/ebene-3-frontend.png)
+[Bild in Vollauflösung](docs/img/ebene-3-frontend.png)
 
 #### Game Service
-![ebene-3-game.png](img/ebene-3-game.png)
+![ebene-3-game.png](docs/img/ebene-3-game.png)
 
-[Bild in Vollauflösung](img/ebene-3-game.png)
+[Bild in Vollauflösung](docs/img/ebene-3-game.png)
 
 #### User Service
-![ebene-3-user.png](img/ebene-3-user.png)
+![ebene-3-user.png](docs/img/ebene-3-user.png)
 
-[Bild in Vollauflösung](img/ebene-3-user.png)
+[Bild in Vollauflösung](docs/img/ebene-3-user.png)
 
 Das Gateway speichert ein Cookie für den User, welches die UserID enthält. Dieses Cookie wird bei jeder Anfrage an das Backend mitgeschickt.
 Das Gateway liest das Cookie bei einer Anfrage wieder aus und leitet bei GET/user/:id die darin enthaltene UserID an den User-Service weiter.
@@ -147,9 +131,9 @@ Alle Formulareingaben sind required und werden sowohl Client- als auch Serversei
 
 
 ### Seite aufrufen (Momentanen User laden)
-![laufzeit-user-laden.png](img/laufzeit-user-laden.png)
+![laufzeit-user-laden.png](docs/img/laufzeit-user-laden.png)
 
-[Bild in Vollauflösung](img/laufzeit-user-laden.png)
+[Bild in Vollauflösung](docs/img/laufzeit-user-laden.png)
 
 Ruft der User die Seite auf, wird zuallererst ein im AppModule definierter APP_Initializer ausgelöst, welcher über den UserService den momentanen User lädt.
 Im Gateway wird geprüft, ob mit dem Request ein Cookie mitgeschickt wurde. Falls ja, wird die UserID aus dem Cookie ausgelesen und an den wato-user Service weitergeleitet, welcher den User aus der Datenbank lädt und zurückgibt.
@@ -157,9 +141,9 @@ Der User wird im Frontend im UserService abgespeichert und kann so von jeder Kom
 Falls kein Cookie mit dem Request mitgeschickt wurde, wird vom Frontend eine 404-Fehlermeldung zurückgegeben und der User im UserService bleibt undefined. Erst nach Erfüllung dieser Anfrage werden die Komponenten geladen.
 
 ### Spiel erstellen
-![laufzeit-spiel-erstellen.png](img/laufzeit-spiel-erstellen.png)
+![laufzeit-spiel-erstellen.png](docs/img/laufzeit-spiel-erstellen.png)
 
-[Bild in Vollauflösung](img/laufzeit-spiel-erstellen.png)
+[Bild in Vollauflösung](docs/img/laufzeit-spiel-erstellen.png)
 
 Nachdem das Formular zur Erstellung der Challenge ausgefüllt und der "Freund herausfordern"-Knopf gedrückt wurde, wird die Challenge vom ChallengeService mit dem Status NEW an das Gateway gesendet.
 Das Gateway liest das Cookie "id" aus. Falls der User bereits mit der Webseite interagiert hat, wird dieses gesetzt sein. Falls nicht, wird über den wato-user Service ein neuer User angelegt und das Cookie gesetzt.
@@ -167,9 +151,9 @@ Mit der Id des Users als ChallengerId, entweder vom Cookie oder direkt von der A
 Die challengeId wird bis zur ChallengeCreationComponent zurückgegeben, welche mit dieser die ShareComponent aufruft. Die ShareComponent zeigt dem User den URL an, welche dieser an seinen Freund (Herausgeforderte Person) senden kann.
 
 ### Spiel aufrufen
-![laufzeit-spiel.aufrufen.png](img/laufzeit-spiel-aufrufen.png)
+![laufzeit-spiel.aufrufen.png](docs/img/laufzeit-spiel-aufrufen.png)
 
-[Bild in Vollauflösung](img/laufzeit-spiel-aufrufen.png)
+[Bild in Vollauflösung](docs/img/laufzeit-spiel-aufrufen.png)
 
 Wird /challenge/:id aufgerufen, wird die ChallengeId aus der URL ausgelesen und über ChallengeService an das Gateway weitergeleitet. Das Gateway leitet die Anfrage an den wato-game Service weiter, welcher die Challenge aus der Datenbank lädt und zurückgibt.
 Falls der challengeStatus nicht SUCCESS oder FAILURE ist, also das Spiel nicht fertig ist, wird aus der Challenge die challengerNumber, sowie die challengeeNumber, also die Nummern, welche die Spieler wählen, herausgelöscht, um zu verhindern, dass ein Spieler die Zahl eines anderen auslesen kann.
@@ -177,27 +161,27 @@ Danach werden anhand der Ids die Namen der Spieler geladen und die Challenge an 
 Schliesslich prüft die ChallengeDetailComponent, ob der momentane User überhaupt berechtigt ist, die Challenge beim momentanen ChallengeStatus zu sehen. Falls nicht, wird auf die ShareComponent mit der Id des Spiels weitergeleitet.
 Zur Vereinfachung im Diagramm nicht abgebildet, da nicht wesentlich, wird am Schluss, falls die Challenge den Status NEW hat noch der User aus dem UserService geladen, um den Namen der Herausgeforderten Person im Formular bereits zu setzen. Dies nur, falls der User bereits mit der Webseite interagiert hat.
 ### Spielbereich bestimmen
-![laufzeit-spielbereich-bestimmen.png](img/laufzeit-spielbereich-bestimmen.png)
+![laufzeit-spielbereich-bestimmen.png](docs/img/laufzeit-spielbereich-bestimmen.png)
 
-[Bild in Vollauflösung](img/laufzeit-spielbereich-bestimmen.png)
+[Bild in Vollauflösung](docs/img/laufzeit-spielbereich-bestimmen.png)
 
 Wird der Zahlenbereich gesetzt, wird die Änderung an den ChallengeService übergeben, welcher die Challenge an das Gateway weiterleitet. Das Gateway liest das Cookie "id" aus. Falls der User bereits mit der Webseite interagiert hat, wird dieses gesetzt sein. Falls nicht, wird über den wato-user Service ein neuer User angelegt und das Cookie gesetzt.
 Mit der Id des Users als ChallengeeId, entweder vom Cookie oder direkt von der Antwort des wato-user Services, wird die Challenge an den wato-game Service weitergeleitet. Im wato-game Service wird der neue Status GUESS_TO_BE_SET gesetzt und die Challenge in der Datenbank aktualisiert. Die Datenbank gibt dabei das geänderte Challenge-Objekt zurück, welches ans Gateway weitergeleitet wird.
 Im Gateway werden die Namen der Spieler vom User Service geladen und die Challenge an den ChallengeService zurückgegeben, welcher das UI der bearbeiteten Challenge entsprechend aktualisiert (Formular wird zu Zahlenauswahl geändert).
 
 ### Zahl auswählen
-![laufzeit-zahl-auswaehlen.png](img/laufzeit-zahl-auswaehlen.png)
+![laufzeit-zahl-auswaehlen.png](docs/img/laufzeit-zahl-auswaehlen.png)
 
-[Bild in Vollauflösung](img/laufzeit-zahl-auswaehlen.png)
+[Bild in Vollauflösung](docs/img/laufzeit-zahl-auswaehlen.png)
 
 Wird die Zahl gesetzt, wird die Änderung an den ChallengeService übergeben, welcher die Challenge an das Gateway weiterleitet. Das Gateway sendet die Challenge an den wato-game Service weiter - ohne ein Cookie auszulesen - welcher die Challenge in der Datenbank aktualisiert. Die Datenbank gibt dabei das geänderte Challenge-Objekt zurück, welches ans Gateway weitergeleitet wird.
 Im Gateway werden die Namen der Spieler noch vom User Service geladen und die Challenge über den ChallengeService der ChallengeDetailComponent zurückgegeben, welche auf die ShareComponent weiterleitet, da das Spiel nun vom Herausforderer fertiggestellt werden muss.
    
 
 ### Spiel fertigstellen
-![laufzeit-spiel-fertigstellen.png](img/laufzeit-spiel-fertigstellen.png)
+![laufzeit-spiel-fertigstellen.png](docs/img/laufzeit-spiel-fertigstellen.png)
 
-[Bild in Vollauflösung](img/laufzeit-spiel-fertigstellen.png)
+[Bild in Vollauflösung](docs/img/laufzeit-spiel-fertigstellen.png)
 
 Wird die Zahl auch vom Herausforderer gesetzt, wird die Änderung an den ChallengeService übergeben, welcher die Challenge an das Gateway weiterleitet. Das Gateway sendet die Challenge an den wato-game Service weiter, welche die Challenge aus der Datenbank holt. 
 Dort wird die Zahl des Herausforderers mit der Zahl des Herausgeforderten verglichen und basierend darauf der Status auf SUCCESS oder FAILURE gesetzt. Anschliessend wird die Challenge in der Datenbank aktualisiert. Die Datenbank gibt dabei das geänderte Challenge-Objekt zurück, welches ans Gateway weitergeleitet wird.
@@ -206,17 +190,17 @@ Im Gateway werden die Namen der Spieler vom User Service geladen und die Challen
 ## Verteilung
 Bei einem produktiven Deployment wäre folgende Verteilung geplant:
 
-![wato-deployment.png](img/wato-deployment.png)
+![wato-deployment.png](docs/img/wato-deployment.png)
 
-[Bild in Vollauflösung](img/wato-deployment.png)
+[Bild in Vollauflösung](docs/img/wato-deployment.png)
 
 Dabei würde das Frontend mittels `ng build` gebaut und auf einem Webserver deployed. das Gateway und die Microservices werden mittels Docker containerized und auf je einem Server abgelegt.
 
 Effektiv wird jedoch nur lokal deployed: Es laufen also das Frontend, das Gateway, sowie alle Services auf derselben Maschine. Das Backend (wato-gateway, wato-user, wato-game) wird mittels Docker-Compose gestartet. Das Frontend wird mittels `ng serve` gestartet. Das Frontend kommuniziert mit dem Gateway über die Adresse `127.0.0.1:8080`.
 
-![wato-local-deployment.png](img/wato-local-deployment.png)
+![wato-local-deployment.png](docs/img/wato-local-deployment.png)
 
-[Bild in Vollauflösung](img/wato-local-deployment.png)
+[Bild in Vollauflösung](docs/img/wato-local-deployment.png)
 
 ## Querschnittliche Konzepte
 ### Internationalisierung i18n
@@ -236,7 +220,7 @@ Der Aufwand der Wissensbeschaffung wäre zu hoch und entspricht nicht dem eher t
 Für die Manuellen Tests muss jedes Akzeptanzkriterium mit mindestens einem manuellen Testschritt abgedeckt sein. Sollte ein Fehler auftreten, wird dieser behoben und das Akzeptanzkriterium erneut getestet.
 
 #### Testprotokoll
-Für Testprotokoll siehe [testprotokoll.md](testprotokoll.md).
+Für Testprotokoll siehe [testprotokoll.md](docs/testprotokoll.md).
 
 ### Persistenz
 Die Daten werden in einer MongoDB gespeichert. Die Microservices _wato-game_ und _wato-user_ haben je eine eigene Datenbank. Das Gateway hat keine eigene Datenbank, da es nur als Weiterleitung dient.
