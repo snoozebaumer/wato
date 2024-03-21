@@ -1,0 +1,28 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'wato-frontend/**' # Trigger only when changes occur within wato-frontend directory
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: wato-frontend
+
+      - name: Build
+        run: npm run build --prod
+        working-directory: wato-frontend
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: frontend-build
+          path: wato-frontend/dist/
