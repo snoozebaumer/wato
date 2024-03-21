@@ -24,12 +24,12 @@ export class ChallengeService {
   }
 
   setRange(id: string, range: number, challengeeName: string): Observable<Challenge> {
-    return this.httpClient.put<Challenge>(`http://127.0.0.1:8080/api/challenges/${id}`, {'maxRange': range, challengeeName}, {withCredentials: true});
+    return this.httpClient.patch<Challenge>(`http://127.0.0.1:8080/api/challenges/${id}`, {'maxRange': range, challengeeName}, {withCredentials: true});
   }
 
   setGuess(id: string, challengeeNumber?: number, challengerNumber?: number): Observable<Challenge> {
     const params  = {...(challengeeNumber ? {challengeeNumber} : {}), ...(challengerNumber ? {challengerNumber} : {})}
-    return this.httpClient.put<Challenge>(`http://127.0.0.1:8080/api/challenges/${id}`, params, {withCredentials: true});
+    return this.httpClient.patch<Challenge>(`http://127.0.0.1:8080/api/challenges/${id}`, params, {withCredentials: true});
   }
 
 }

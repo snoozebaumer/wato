@@ -102,10 +102,7 @@ server.get('/api/challenges/:id', async (req, res) => {
     }
 });
 
-/*
-    NOTE: request not idempotent, which PUT should be. this should be changed to PATCH on refactor.
- */
-server.put('/api/challenges/:id', async (req, res) => {
+server.patch('/api/challenges/:id', async (req, res) => {
     const id = req.params.id;
     let challengeeId;
 
@@ -135,7 +132,7 @@ server.put('/api/challenges/:id', async (req, res) => {
     }
 
     try {
-        const response = await axios.put(process.env.GAME_SERVICE_ADDR + '/' + id,
+        const response = await axios.patch(process.env.GAME_SERVICE_ADDR + '/' + id,
             {...(challengeeId ? {challengeeId} : {}), ...req.body});
 
         try {
