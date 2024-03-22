@@ -2,7 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const {MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
 require('dotenv').config();
-require('log-timestamp');
+const winston = require('winston');
 const {ChallengeStatus} = require('./models/challenge-status');
 
 const server = express();
@@ -21,15 +21,29 @@ const client = new MongoClient(uri, {
     }
 });
 
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.timestamp(),
+        winston.format.align(),
+        winston.format.printf(info => `${info.timestamp} ${info.service.toUpperCase()} ${info.level}: ${info.message}`)
+    ),
+    defaultMeta: { service: 'game' },
+    transports: [
+        new winston.transports.Console()
+    ]
+});
+
 server.post('/game', async (req, res) => {
     try {
         await client.connect();
         const db = await client.db(process.env.DB_NAME);
         const id = (await db.collection('challenge').insertOne(req.body)).insertedId;
-        console.log('GAME: created challenge with id: ' + id)
+        logger.info(`created challenge with id: ${id.toString()}`);
         res.send({'id': id.toString()});
     } catch (e) {
-        console.error(`GAME: could not create challenge with error: `, e.message);
+        logger.error(`could not create challenge with error: ${e.message}`);
         res.status(500).send(e);
     } finally {
         res.end();
@@ -43,10 +57,10 @@ server.get('/game/:id', async (req, res) => {
         await client.connect();
         const db = await client.db(process.env.DB_NAME);
         const challenge = await db.collection('challenge').findOne({_id: new ObjectId(id)});
-        console.log('GAME: fetched challenge with id: ' + id);
+        logger.info(`fetched challenge with id: + ${id.toString()}`);
         res.send(challenge);
     } catch (e) {
-        console.error(`GAME: could not fetch challenge with id: ${id} with error: `, e.message);
+        logger.error(`could not fetch challenge with id: ${id} with error: ${e.message}`);
         res.status(404).send(e);
     } finally {
         res.end();
@@ -94,10 +108,10 @@ server.patch('/game/:id', async (req, res) => {
             return res.status(403).send("Challenge status cannot be changed.");
         }
 
-        console.log(`GAME: changed challenge status for id: ${id}. New status: ${newStatus}, edited values: ${JSON.stringify(req.body)}`)
+        logger.info(`changed challenge status for id: ${id}. New status: ${newStatus}, edited values: ${JSON.stringify(req.body)}`)
         res.send(challenge);
     } catch (e) {
-        console.error(`GAME: could not edit challenge with id: ${id} and change: ${JSON.stringify(req.body)} with error: `, e.message);
+        logger.error(`could not edit challenge with id: ${id} and change: ${JSON.stringify(req.body)} with error: ${e.message}`);
         res.status(500).send(e);
     }
 
@@ -106,5 +120,5 @@ server.patch('/game/:id', async (req, res) => {
 });
 
 server.listen(port, () => {
-    console.log('GAME: listening on port ', port);
+    logger.info(`game service started on port ${port}`);
 });
