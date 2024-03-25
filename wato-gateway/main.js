@@ -172,7 +172,7 @@ server.patch('/api/challenges/:id', async (req, res) => {
         logger.info(`Edited challenge with id: ${id} for IP: ${req.ip}`);
         res.send(response.data);
     } catch (error) {
-        logger.error(`GATEWAY: failed to edit challenge for IP: ${req.ip} with error: ${error.message}`);
+        logger.error(`failed to edit challenge for IP: ${req.ip} with error: ${error.message}`);
         return res.status(500).send('Internal Server Error');
     }
 });
