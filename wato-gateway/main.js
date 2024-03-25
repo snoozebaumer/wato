@@ -194,6 +194,8 @@ server.get('/api/user', async (req, res) => {
     }
 });
 
-server.listen(port, () => {
+const serverInstance = server.listen(port, () => {
     logger.info(`gateway started on port ${port}.`);
 });
+
+module.exports = serverInstance;

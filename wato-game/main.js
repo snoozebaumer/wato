@@ -119,6 +119,8 @@ server.patch('/game/:id', async (req, res) => {
     res.end();
 });
 
-server.listen(port, () => {
+const serverInstance = server.listen(port, () => {
     logger.info(`game service started on port ${port}`);
 });
+
+module.exports = serverInstance;

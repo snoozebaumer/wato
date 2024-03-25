@@ -68,6 +68,8 @@ server.get('/user/:id', async (req, res) => {
     }
 });
 
-server.listen(port, () => {
+const serverInstance = server.listen(port, () => {
     logger.info(`user service started on port ${port}`);
 });
+
+module.exports = serverInstance;
