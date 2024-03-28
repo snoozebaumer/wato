@@ -36,9 +36,9 @@ describe('Gateway API Unit Tests', () => {
         it('should fetch a challenge and not return guesses before challenge is finished', async () => {
             const challengeId = 'challengeId';
             const mockChallengeData = {
-                id: challengeId,
-                challengerName: 'Test Challenger',
-                challengeeName: 'Test Challengee',
+                _id: challengeId,
+                challengerId: 'id',
+                challengeeId: 'id2',
                 ...challengeData,
                 challengerNumber: 50,
                 challengeeNumber: 25
@@ -46,7 +46,11 @@ describe('Gateway API Unit Tests', () => {
             mockChallengeData.challengeStatus = 'GAME.CHALLENGER_TO_MOVE_TITLE';
 
             const axiosGetStub = sandbox.stub(axios, 'get');
-            axiosGetStub.resolves({data: mockChallengeData});
+            axiosGetStub.onFirstCall().resolves({data: mockChallengeData});
+
+            axiosGetStub.onSecondCall().resolves({data: {name: 'Test Challengee'}});
+
+            axiosGetStub.onThirdCall().resolves({data: {name: 'Test Challenger'}});
 
             const res = await request(app)
                 .get(`/api/challenges/${challengeId}`);
@@ -63,9 +67,9 @@ describe('Gateway API Unit Tests', () => {
         it('should fetch a challenge and return guesses after challenge is finished', async () => {
             const challengeId = 'challengeId';
             const mockChallengeData = {
-                id: challengeId,
-                challengerName: 'Test Challenger',
-                challengeeName: 'Test Challengee',
+                _id: challengeId,
+                challengerId: 'id',
+                challengeeId: 'id2',
                 ...challengeData,
                 challengerNumber: 50,
                 challengeeNumber: 50
@@ -73,7 +77,9 @@ describe('Gateway API Unit Tests', () => {
             mockChallengeData.challengeStatus = 'GAME.SUCCESS_TITLE';
 
             const axiosGetStub = sandbox.stub(axios, 'get');
-            axiosGetStub.resolves({data: mockChallengeData});
+            axiosGetStub.onFirstCall().resolves({data: mockChallengeData});
+            axiosGetStub.onSecondCall().resolves({data: {name: 'Test Challengee'}});
+            axiosGetStub.onThirdCall().resolves({data: {name: 'Test Challenger'}});
 
             const res = await request(app)
                 .get(`/api/challenges/${challengeId}`);
