@@ -7,14 +7,17 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const {ChallengeStatus} = require('./models/challenge-status');
 
+const SERVICE_NAME = 'gateway';
+const PORT = 8080;
+const ONE_YEAR_IN_MS = 365 * 24 * 60 * 60 * 1000;
 const server = express();
-const port = 8080;
-const cookieExpirationOneYearInMs = 365 * 24 * 60 * 60 * 1000;
 
+// Middleware
 server.use(cors({origin: 'http://localhost:4200', credentials: true}));
 server.use(cookieParser());
 server.use(bodyParser.json());
 
+// Logger
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.combine(
@@ -23,17 +26,25 @@ const logger = winston.createLogger({
         winston.format.align(),
         winston.format.printf(info => `${info.timestamp} ${info.service.toUpperCase()} ${info.level}: ${info.message}`)
     ),
-    defaultMeta: { service: 'gateway' },
+    defaultMeta: { service: SERVICE_NAME },
     transports: [
         new winston.transports.Console()
     ]
 });
 
-server.get('/', async (req, res) => {
-    res.send('wato API is running.');
-});
+// Routes
+server.get('/', handleRoot);
+server.post('/api/challenges', handleChallengeCreation);
+server.get('/api/challenges/:id', handleFetchChallenge);
+server.patch('/api/challenges/:id', handleEditChallenge);
+server.get('/api/user', handleGetCurrentUser);
 
-server.post('/api/challenges', async (req, res) => {
+// Handlers
+async function handleRoot(req, res) {
+    res.send('wato API is running.');
+}
+
+async function handleChallengeCreation(req, res) {
     const {challenge, name, challengeStatus} = req.body;
 
     // input validation
@@ -41,133 +52,56 @@ server.post('/api/challenges', async (req, res) => {
         return res.status(400).send('Bad Request');
     }
 
-    let userId;
-
-    // Check if user exists, if not create user
-    if (!req.cookies || !req.cookies.id) {
-        try {
-            const response = await axios.post(process.env.USER_SERVICE_ADDR, {name});
-            userId = response.data.id;
-            res.cookie('id', userId, {httpOnly: false, sameSite: 'none', secure: true, maxAge: cookieExpirationOneYearInMs});
-            logger.info(`Created user: ${name} with id: ${userId} from IP: ${req.ip}`);
-        } catch (error) {
-            logger.error(`failed to create user: ${name} from IP: ${req.ip} with error: ${error.message}`);
-            return res.status(500).send('Internal Server Error');
-        }
-    } else {
-        userId = req.cookies.id;
-    }
-
-    // Send request to game service
     try {
-        const response = await axios.post(process.env.GAME_SERVICE_ADDR, {
-            'challengerId': userId,
-            challenge,
-            challengeStatus
-        });
-        const gameId = response.data.id;
-        logger.info(`Created challenge with id: ${gameId} from IP: ${req.ip}`);
-        res.send({id: gameId});
-    } catch (error) {
+        const userId = await createUserIfNotExists(req, res, name);
+        const challengeId = await createChallenge(req, res, userId, challenge, challengeStatus);
+        logger.info(`Created challenge with id: ${challengeId} from IP: ${req.ip}`);
+        res.send({id: challengeId});
+    } catch(error) {
         logger.error(`failed to create challenge from IP: ${req.ip} with error: ${error.message}`);
         return res.status(500).send('Internal Server Error');
     }
-});
+}
 
-server.get('/api/challenges/:id', async (req, res) => {
+async function handleFetchChallenge(req, res) {
     const id = req.params.id;
-
     try {
-        const response = await axios.get(process.env.GAME_SERVICE_ADDR + '/' + id);
+        let response = await axios.get(process.env.GAME_SERVICE_ADDR + '/' + id);
+        response.data = processChallengeResponse(response.data);
 
-        // "security": don't send numbers to client if game isn't finished so cheaters can't read from js
-        if (response.data.challengeStatus !== ChallengeStatus.SUCCESS &&
-            response.data.challengeStatus !== ChallengeStatus.FAILURE) {
-            delete response.data['challengerNumber'];
-            delete response.data['challengeeNumber'];
-        }
-
-        // _id -> id
-        delete Object.assign(response.data, {id: response.data._id})._id;
-
-        try {
-            const challengerUserResponse = await axios.get(process.env.USER_SERVICE_ADDR + '/' +
-                response.data.challengerId);
-            response.data.challengerName = challengerUserResponse.data.name;
-        } catch {
-            response.data.challengerName = 'Unknown';
-        }
-
+        response.data.challengerName = await getUserName(response.data.challengerId);
         if (response.data.challengeeId) {
-            try {
-                const challengeeUserResponse = await axios.get(process.env.USER_SERVICE_ADDR + '/' +
-                    response.data.challengeeId);
-                response.data.challengeeName = challengeeUserResponse.data.name;
-            } catch {
-                response.data.challengeeName = 'Unknown';
-            }
+            response.data.challengeeName = await getUserName(response.data.challengeeId);
         }
 
-        logger.info(`Fetched challenge with id: ${id} for IP: ${req.ip}`);
+        logger.info(`Fetched challenge with id: ${id}`);
         res.send(response.data);
     } catch (error) {
-        logger.error(`failed to fetch challenge for IP: ${req.ip} with error: ${error.message}`);
+        logger.error(`Failed to fetch challenge: ${error.message}`);
         return res.status(500).send('Internal Server Error');
     }
-});
+}
 
-server.patch('/api/challenges/:id', async (req, res) => {
+async function handleEditChallenge(req, res) {
     const id = req.params.id;
     let challengeeId;
 
     // if range is provided, which means the challengee interacts with the game for the first time
     if(req.body.maxRange) {
-        // Check if user exists, if not, try and create user
-        if (!req.cookies || !req.cookies.id) {
-            if (!req.body.challengeeName) {
-                return res.status(400).send('Please provide username');
-            }
-
-            const name = req.body.challengeeName;
-
-            try {
-                const response = await axios.post(process.env.USER_SERVICE_ADDR, {name});
-                challengeeId = response.data.id;
-                res.cookie('id', challengeeId, {httpOnly: false, sameSite: 'none', secure: true, maxAge: cookieExpirationOneYearInMs});
-                logger.info(`Created user: ${name} with id: ${challengeeId} from IP: ${req.ip}`);
-            } catch (error) {
-                logger.error(`failed to create user: ${name} from IP: ${req.ip} with error: ${error.message}`);
-                return res.status(500).send('Internal Server Error');
-            }
-        } else {
-            challengeeId = req.cookies.id;
+        if (!req.body.challengeeName && (!req.cookies || !req.cookies.id)) {
+            return res.status(400).send('Please provide username');
         }
+
+        challengeeId = createUserIfNotExists(req, res, req.body.challengeeName);
         delete req.body.challengeeName;
     }
 
     try {
-        const response = await axios.patch(process.env.GAME_SERVICE_ADDR + '/' + id,
+        // add challengeeId to the request body if it exists, if not, just send the request body
+        let response = await axios.patch(process.env.GAME_SERVICE_ADDR + '/' + id,
             {...(challengeeId ? {challengeeId} : {}), ...req.body});
 
-        try {
-            const challenger = await axios.get(process.env.USER_SERVICE_ADDR + '/' +
-                response.data.challengerId);
-            response.data.challengerName = challenger.data.name;
-        } catch (error) {
-            response.data.challengerName = "Unknown";
-        }
-
-
-        if (response.data.challengeeId) {
-            try {
-                const challengeeUserResponse = await axios.get(process.env.USER_SERVICE_ADDR + '/' +
-                    response.data.challengeeId);
-                response.data.challengeeName = challengeeUserResponse.data.name;
-            } catch {
-                response.data.challengeeName = 'Unknown';
-            }
-        }
-
+        response.data = await processEditedChallengeResponse(req, res, response.data);
 
         logger.info(`Edited challenge with id: ${id} for IP: ${req.ip}`);
         res.send(response.data);
@@ -175,9 +109,9 @@ server.patch('/api/challenges/:id', async (req, res) => {
         logger.error(`failed to edit challenge for IP: ${req.ip} with error: ${error.message}`);
         return res.status(500).send('Internal Server Error');
     }
-});
+}
 
-server.get('/api/user', async (req, res) => {
+async function handleGetCurrentUser(req, res) {
     if (!req.cookies || !req.cookies.id) {
         logger.info(`no cookie set for user for ip ${req.ip}.`)
         return res.status(404).send("User not found");
@@ -192,10 +126,69 @@ server.get('/api/user', async (req, res) => {
         logger.error(`failed to fetch user for IP: ${req.ip} with error: ${error.message}.`);
         return res.status(500).send('Internal Server error');
     }
-});
+}
 
-const serverInstance = server.listen(port, () => {
-    logger.info(`gateway started on port ${port}.`);
+// Helper functions
+async function processEditedChallengeResponse(req, res, data) {
+    data.challengerName = await getUserName(data.challengerId);
+    if (data.challengeeId) {
+        data.challengeeName = await getUserName(data.challengeeId);
+    }
+    return data;
+}
+
+function processChallengeResponse(data) {
+    if (data.challengeStatus !== ChallengeStatus.SUCCESS &&
+        data.challengeStatus !== ChallengeStatus.FAILURE) {
+        delete data['challengerNumber'];
+        delete data['challengeeNumber'];
+    }
+    delete Object.assign(data, { id: data._id })._id;
+
+    return data;
+}
+
+async function getUserName(userId) {
+    try {
+        const response = await axios.get(process.env.USER_SERVICE_ADDR + '/' + userId);
+        return response.data.name;
+    } catch (error) {
+        return 'Unknown';
+    }
+}
+
+async function createUserIfNotExists(req, res, name) {
+    let userId;
+
+    // Check if user exists, if not create user
+    if (!req.cookies || !req.cookies.id) {
+        try {
+            const response = await axios.post(process.env.USER_SERVICE_ADDR, {name});
+            userId = response.data.id;
+            res.cookie('id', userId, {httpOnly: false, sameSite: 'none', secure: true, maxAge: ONE_YEAR_IN_MS});
+            logger.info(`Created user: ${name} with id: ${userId} from IP: ${req.ip}`);
+        } catch (error) {
+            logger.error(`failed to create user: ${name} from IP: ${req.ip} with error: ${error.message}`);
+            throw error;
+        }
+    } else {
+        userId = req.cookies.id;
+    }
+    return userId;
+}
+
+async function createChallenge(req, res, userId, challenge, challengeStatus) {
+    const response = await axios.post(process.env.GAME_SERVICE_ADDR, {
+        'challengerId': userId,
+        challenge,
+        challengeStatus
+    });
+    return response.data.id;
+}
+
+// Start server
+const serverInstance = server.listen(PORT, () => {
+    logger.info(`gateway started on port ${PORT}.`);
 });
 
 module.exports = serverInstance;
