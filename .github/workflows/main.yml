@@ -21,6 +21,10 @@ jobs:
         run: npm run build --prod
         working-directory: wato-frontend
 
+      - name: Test
+        run: npm run test
+        working-directory: wato-frontend
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
