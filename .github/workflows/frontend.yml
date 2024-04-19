@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'wato-frontend/**' # Trigger only when changes occur within wato-frontend directory
+  pull_request:
+    paths:
+      - 'wato-frontend/**'
 
 jobs:
   build:
@@ -15,6 +18,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: wato-frontend
+
+      - name: Lint
+        run: npm run lint
         working-directory: wato-frontend
 
       - name: Build
