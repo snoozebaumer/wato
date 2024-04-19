@@ -27,7 +27,6 @@ export class TranslatePipeMock implements PipeTransform {
 }
 
 describe('CreateChallengeComponent', () => {
-  let component: ChallengeCreationComponent;
   let fixture: ComponentFixture<ChallengeCreationComponent>;
 
   beforeEach(async () => {
@@ -57,7 +56,6 @@ describe('CreateChallengeComponent', () => {
     .compileComponents();
 
     fixture = TestBed.createComponent(ChallengeCreationComponent);
-    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -125,7 +123,7 @@ describe('CreateChallengeComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     const challengerInput = element.querySelector('#name');
 
-    // @ts-ignore
+    // @ts-expect-error ts compiler does not register that "value" attribute exists, even though it does.
     expect(challengerInput["value"]).toEqual('test');
   }));
 

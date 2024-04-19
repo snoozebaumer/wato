@@ -57,7 +57,7 @@ export class ChallengeDetailComponent {
   }
 
   setChallengeeGuess() {
-    this.setGuess(this.challenge.challengeeNumber, true)?.subscribe(async (response) => {
+    this.setGuess(this.challenge.challengeeNumber, true)?.subscribe(async () => {
       this.formError = undefined;
       await this.router.navigate(['/share', this.challenge.id]);
     });

@@ -42,9 +42,9 @@ describe('ChallengeDetailComponent', () => {
   let component: ChallengeDetailComponent;
   let fixture: ComponentFixture<ChallengeDetailComponent>;
   let mockActivatedRoute;
-  let mockRouter = jasmine.createSpyObj(['navigate']);
-  let mockChallengeService = jasmine.createSpyObj<ChallengeService>('ChallengeService', ['getChallenge', 'setRange', 'setGuess']);
-  let mockUserService = jasmine.createSpyObj('UserService', ['get']);
+  const mockRouter = jasmine.createSpyObj(['navigate']);
+  const mockChallengeService = jasmine.createSpyObj<ChallengeService>('ChallengeService', ['getChallenge', 'setRange', 'setGuess']);
+  const mockUserService = jasmine.createSpyObj('UserService', ['get']);
 
   beforeEach(() => {
     mockActivatedRoute = {

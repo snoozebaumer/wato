@@ -8,6 +8,7 @@ import {Pipe, PipeTransform} from "@angular/core";
 @Pipe({name: 'translate'})
 class TranslatePipeMock implements PipeTransform {
   transform(value: string): string {
+    console.log(value);
     return "What are the odds?";
   }
 }
