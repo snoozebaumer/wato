@@ -38,8 +38,6 @@
     "globals": "^15.0.0",
     "mocha": "^10.3.0",
     "sinon": "^17.0.1",
-    "supertest": "^6.3.4",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^7.7.1"
+    "supertest": "^6.3.4"
   }
 }
