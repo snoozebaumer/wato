@@ -258,5 +258,3 @@ Trotzdem wäre in der Praxis bei diesem Beispiel eine Microservice-Architektur w
 | 4 | Sicherheit           | Die Spielstatusänderungen, sowie die Spiel-ID sollen gemeinsam mit der «verursachenden» IP und einem Timestamp geloggt werden. Dies zur Ermöglichung einer zukünftigen Datenanalyse oder Verhinderung einer Spamattacke. | Logging ins stdout im Backend |
 
 ## Technische Schulden und Risiken
-- Die Endpunkte in wato-gateway und wato-game sind als Ergebnis des Zeitmangels lange und unübersichtlich. Dies führt zu einer unwartbaren Applikation, welche schwer zu erweitern ist und möglicherweise Fehler enthält.
--> refactoring
