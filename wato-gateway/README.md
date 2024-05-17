@@ -6,18 +6,18 @@ Backend Gateway For ["What are the Odds"](https://github.com/snoozebaumer/wato).
 ```
 npm install
 ```
-2. Set up the corresponding microservices ([wato-game](https://github.com/snoozebaumer/wato-game), [wato-user](https://github.com/snoozebaumer/wato-user)) and run them.
-3. Copy the `.env.example` file and rename it to `.env`. Then fill in the required environment variables.
+2. Set up the corresponding microservices ([wato-game](https://github.com/snoozebaumer/wato/tree/main/wato-game), [wato-user](https://github.com/snoozebaumer/wato/tree/main/wato-user)) and run them.
+3. Copy the `.env.example` file and rename it to `.env`. Then fill in the required environment variables for your environment.
 
 ## Run the gateway server
 Run the following command to start the server:
 ```
 npm run start
 ```
-Now you can either use the frontend application ([wato-frontend](https://github.com/snoozebaumer/wato-game)) or curl / Postman to test the API.
+Now you can either use the frontend application ([wato-frontend](https://github.com/snoozebaumer/wato/tree/main/wato-frontend)) or curl / Postman to test the API.
 
 ## Run the whole backend stack at once (compose for development)
-Run the following command to start the whole backend application in docker (gateway, game, user):
+Run the following command in [project root](https://github.com/snoozebaumer/wato) to start the whole backend application in docker (gateway, game, user):
 ```
 docker compose up --build
 ````

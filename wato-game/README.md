@@ -1,9 +1,9 @@
 # wato-game
 Game microservice for ["What are the Odds"](https://github.com/snoozebaumer/wato).
 
-See the gateway [wato-gateway](https://github.com/snoozebaumer/wato-gateway) for complete system setup information.
+See the project root [wato](https://github.com/snoozebaumer/wato) for complete system setup information.
 
-## Project setup
+## Project setup (Dev)
 1. Run the following command to install all dependencies:
 ```
 npm install
