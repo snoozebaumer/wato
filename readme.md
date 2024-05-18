@@ -1,5 +1,5 @@
 # What are the Odds?
-![Frontend CI](https://github.com/snoozebaumer/wato/actions/workflows/frontend.yml/badge.svg) ![Gateway CI](https://github.com/snoozebaumer/wato/actions/workflows/gateway.yml/badge.svg) ![Game Service CI](https://github.com/snoozebaumer/wato/actions/workflows/game-service.yml/badge.svg) ![User Service CI](https://github.com/snoozebaumer/wato/actions/workflows/user-service.yml/badge.svg)
+[![Frontend CI](https://github.com/snoozebaumer/wato/actions/workflows/frontend.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/frontend.yml) [![Gateway CI](https://github.com/snoozebaumer/wato/actions/workflows/gateway.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/gateway.yml) [![Game Service CI](https://github.com/snoozebaumer/wato/actions/workflows/game-service.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/game-service.yml) [![User Service CI](https://github.com/snoozebaumer/wato/actions/workflows/user-service.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/user-service.yml)
 ___
 For Architecture Decision Records see [docs/adr](docs/adr).
 ___
