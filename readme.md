@@ -1,4 +1,5 @@
 # What are the Odds?
+![Frontend CI](https://github.com/snoozebaumer/wato/actions/workflows/frontend.yml/badge.svg) ![Gateway CI](https://github.com/snoozebaumer/wato/actions/workflows/gateway.yml/badge.svg) ![Game Service CI](https://github.com/snoozebaumer/wato/actions/workflows/game-service.yml/badge.svg) ![User Service CI](https://github.com/snoozebaumer/wato/actions/workflows/user-service.yml/badge.svg)
 ## Einleitung
 ![wato-start-screen.png](docs/img/wato-start-screen.png)
 
