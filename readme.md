@@ -19,6 +19,31 @@ Die Projektidee wurde inspiriert durch [EisZu](https://capso-789ce.web.app/) von
   - Game Service: [wato-game](wato-game)
   - User Service: [wato-user](wato-user)
 
+## Projektsetup
+### Entwicklung
+Mit folgendem Befehl können alle Abhängigkeiten installiert werden:
+````
+npm install
+````
+Um den Server zu starten, führen Sie den folgenden Befehl aus:
+````
+docker compose up --build
+````
+dies erfordert, dass in allen Directories (wato-gateway, wato-game, wato-user) ein `.env` File mit den Umgebungsvariablen vorhanden ist.
+
+### Deployment
+Laden Sie die neusten Versionen der Docker-Images des Backends herunter, starten Sie die Container und definieren Sie die benötigten Umgebungsvariablen entweder mit --env-file, oder mit -e:
+````
+docker run -d -p 8080:8080 --env-file .env --name wato-gateway ghcr.io/snoozebaumer/wato/gateway:main
+docker run -d --env-file .env --name wato-game ghcr.io/snoozebaumer/wato/game:main
+docker run -d --env-file .env --name wato-user ghcr.io/snoozebaumer/wato/user:main
+````
+Builden Sie das Frontend:
+````
+ng build
+````
+und deployen Sie es auf einem Webserver. Die Adresse des Gateways muss vor dem Build angepasst werden, falls diese nicht auf localhost (`172.0.0.1:8080`) liegt.
+
 ## Inhaltsverzeichnis
 1. [Ablauf](#ablauf)
 2. [Lösungsstrategie](#lösungsstrategie)
