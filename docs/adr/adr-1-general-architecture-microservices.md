@@ -35,7 +35,7 @@ A microservices architecture was chosen for the application. The application con
 
 The two services are each connected to a separate MongoDB database.
 
-![wato-components.png](img/wato-components.png)
+![wato-components.png](../img/wato-components.png)
 ## Rationale
 The microservices architecture mainly was chosen to gain more experience with it, but also to clearly separate the concerns of the application. The frontend is separated from the backend, which is separated into two services. This separation allows for easier scaling of the application, as the services can be scaled independently. The gateway is used to route requests to the correct service, which allows for easier scaling and maintenance of the application. In practice, a microservice architecture would make little sense in this example: the core of the application is the game service. If it isn't running, the entire application cannot be used sensibly.
 ## Consequences
