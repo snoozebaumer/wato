@@ -36,7 +36,8 @@ const logger = winston.createLogger({
 
 
 server.post('/user', async (req, res) => {
-    const name = req.body.name;
+    const name = req.body.name.toString();
+
     try {
         await client.connect();
         const db = await client.db(process.env.DB_NAME);

@@ -36,10 +36,12 @@ const logger = winston.createLogger({
 });
 
 server.post('/game', async (req, res) => {
+    let query = {challengerId: req.body.challengerId.toString(), challenge: req.body.challenge.toString(), challengeStatus: ChallengeStatus.NEW};
+
     try {
         await client.connect();
         const db = await client.db(process.env.DB_NAME);
-        const id = (await db.collection('challenge').insertOne(req.body)).insertedId;
+        const id = (await db.collection('challenge').insertOne(query)).insertedId;
         logger.info(`created challenge with id: ${id.toString()}`);
         res.send({'id': id.toString()});
     } catch (e) {
