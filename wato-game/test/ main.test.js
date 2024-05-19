@@ -112,14 +112,14 @@ afterEach(() => {
     sandbox.restore();
 });
 
-createChallengeWithoutChecks = async (challengeToCreate) => {
+const createChallengeWithoutChecks = async (challengeToCreate) => {
     const res = await request(app)
         .post('/game')
         .send(challengeToCreate);
     return res.body.id;
 }
 
-setRangeForChallenge = async (challengeId, range) => {
+const setRangeForChallenge = async (challengeId, range) => {
     return await request(app)
         .patch(`/game/${challengeId}`)
         .send({
@@ -128,7 +128,7 @@ setRangeForChallenge = async (challengeId, range) => {
         })
 }
 
-setChallengeeGuessForChallenge = async (challengeId, guess) => {
+const setChallengeeGuessForChallenge = async (challengeId, guess) => {
     return await request(app)
         .patch(`/game/${challengeId}`)
         .send({
@@ -136,7 +136,7 @@ setChallengeeGuessForChallenge = async (challengeId, guess) => {
         })
 }
 
-setChallengerGuessForChallenge = async (challengeId, guess) => {
+const setChallengerGuessForChallenge = async (challengeId, guess) => {
     return await request(app)
         .patch(`/game/${challengeId}`)
         .send({
