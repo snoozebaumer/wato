@@ -5,6 +5,8 @@ require('dotenv').config();
 const winston = require('winston');
 const {ChallengeStatus} = require('./models/challenge-status');
 
+
+const PORT = 4566;
 const server = express();
 const port = 4566;
 

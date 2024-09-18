@@ -5,7 +5,7 @@ const server = express();
 require('dotenv').config();
 const winston = require('winston');
 
-
+const PORT = 4567;
 server.use(bodyParser.json());
 const port = 4567;
 
