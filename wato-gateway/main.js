@@ -11,6 +11,8 @@ const SERVICE_NAME = 'gateway';
 const PORT = 8080;
 const ONE_YEAR_IN_MS = 365 * 24 * 60 * 60 * 1000;
 const server = express();
+// turn off fingerprint
+server.disable("x-powered-by");
 
 // Middleware
 server.use(cors({origin: 'http://localhost:4200', credentials: true}));

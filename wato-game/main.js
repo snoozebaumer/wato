@@ -8,7 +8,8 @@ const {ChallengeStatus} = require('./models/challenge-status');
 
 const PORT = 4566;
 const server = express();
-const port = 4566;
+// turn off fingerprint
+server.disable("x-powered-by");
 
 
 server.use(bodyParser.json());
@@ -121,8 +122,8 @@ server.patch('/game/:id', async (req, res) => {
     res.end();
 });
 
-const serverInstance = server.listen(port, () => {
-    logger.info(`game service started on port ${port}`);
+const serverInstance = server.listen(PORT, () => {
+    logger.info(`game service started on port ${PORT}`);
 });
 
 module.exports = serverInstance;

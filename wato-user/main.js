@@ -7,7 +7,8 @@ const winston = require('winston');
 
 const PORT = 4567;
 server.use(bodyParser.json());
-const port = 4567;
+// turn off fingerprint
+server.disable("x-powered-by");
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/?retryWrites=true&w=majority`;
@@ -68,8 +69,8 @@ server.get('/user/:id', async (req, res) => {
     }
 });
 
-const serverInstance = server.listen(port, () => {
-    logger.info(`user service started on port ${port}`);
+const serverInstance = server.listen(PORT, () => {
+    logger.info(`user service started on port ${PORT}`);
 });
 
 module.exports = serverInstance;
