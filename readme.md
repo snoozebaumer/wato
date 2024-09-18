@@ -1,4 +1,11 @@
 # What are the Odds?
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=snoozebaumer_wato&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=snoozebaumer_wato) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=snoozebaumer_wato&metric=bugs)](https://sonarcloud.io/summary/new_code?id=snoozebaumer_wato) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=snoozebaumer_wato&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=snoozebaumer_wato)
+
+[![Frontend CI](https://github.com/snoozebaumer/wato/actions/workflows/frontend.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/frontend.yml) [![Gateway CI](https://github.com/snoozebaumer/wato/actions/workflows/gateway.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/gateway.yml) [![Game Service CI](https://github.com/snoozebaumer/wato/actions/workflows/game-service.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/game-service.yml) [![User Service CI](https://github.com/snoozebaumer/wato/actions/workflows/user-service.yml/badge.svg)](https://github.com/snoozebaumer/wato/actions/workflows/user-service.yml) 
+___
+For Architecture Decision Records see [docs/adr](docs/adr).
+___
+
 ## Einleitung
 ![wato-start-screen.png](docs/img/wato-start-screen.png)
 
@@ -18,6 +25,31 @@ Die Projektidee wurde inspiriert durch [EisZu](https://capso-789ce.web.app/) von
   - Gateway: [wato-gateway](wato-gateway)
   - Game Service: [wato-game](wato-game)
   - User Service: [wato-user](wato-user)
+
+## Projektsetup
+### Entwicklung
+Mit folgendem Befehl können alle Abhängigkeiten installiert werden:
+````
+npm install
+````
+Um den Server zu starten, führen Sie den folgenden Befehl aus:
+````
+docker compose up --build
+````
+dies erfordert, dass in allen Directories (wato-gateway, wato-game, wato-user) ein `.env` File mit den Umgebungsvariablen vorhanden ist.
+
+### Deployment
+Laden Sie die neusten Versionen der Docker-Images des Backends herunter, starten Sie die Container und definieren Sie die benötigten Umgebungsvariablen entweder mit --env-file, oder mit -e:
+````
+docker run -d -p 8080:8080 --env-file .env --name wato-gateway ghcr.io/snoozebaumer/wato/gateway:main
+docker run -d --env-file .env --name wato-game ghcr.io/snoozebaumer/wato/game:main
+docker run -d --env-file .env --name wato-user ghcr.io/snoozebaumer/wato/user:main
+````
+Builden Sie das Frontend:
+````
+ng build
+````
+und deployen Sie es auf einem Webserver. Die Adresse des Gateways muss vor dem Build angepasst werden, falls diese nicht auf localhost (`172.0.0.1:8080`) liegt.
 
 ## Inhaltsverzeichnis
 1. [Ablauf](#ablauf)

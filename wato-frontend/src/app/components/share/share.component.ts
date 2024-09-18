@@ -3,8 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-share',
-  templateUrl: './share.component.html',
-  styleUrl: './share.component.css'
+  templateUrl: './share.component.html'
 })
 export class ShareComponent {
   id: string = "";

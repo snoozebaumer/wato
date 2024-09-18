@@ -4,8 +4,7 @@ import {Router} from "@angular/router";
 import {UserService} from '../../services/user.service';
 @Component({
   selector: 'create-challenge',
-  templateUrl: './challenge-creation.component.html',
-  styleUrl: './challenge-creation.component.css'
+  templateUrl: './challenge-creation.component.html'
 })
 export class ChallengeCreationComponent {
   formError?: string;

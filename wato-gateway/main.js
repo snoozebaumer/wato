@@ -47,7 +47,7 @@ async function handleRoot(req, res) {
 }
 
 async function handleChallengeCreation(req, res) {
-    const {challenge, name, challengeStatus} = req.body;
+    const {challenge, name} = req.body;
 
     // input validation
     if (!challenge || !name) {
@@ -56,7 +56,7 @@ async function handleChallengeCreation(req, res) {
 
     try {
         const userId = await createUserIfNotExists(req, res, name);
-        const challengeId = await createChallenge(req, res, userId, challenge, challengeStatus);
+        const challengeId = await createChallenge(req, res, userId, challenge);
         logger.info(`Created challenge with id: ${challengeId} from IP: ${req.ip}`);
         res.send({id: challengeId});
     } catch(error) {
@@ -179,11 +179,10 @@ async function createUserIfNotExists(req, res, name) {
     return userId;
 }
 
-async function createChallenge(req, res, userId, challenge, challengeStatus) {
+async function createChallenge(req, res, userId, challenge) {
     const response = await axios.post(process.env.GAME_SERVICE_ADDR, {
         'challengerId': userId,
-        challenge,
-        challengeStatus
+        challenge
     });
     return response.data.id;
 }
