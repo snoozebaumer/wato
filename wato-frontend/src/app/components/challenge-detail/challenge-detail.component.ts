@@ -16,8 +16,8 @@ export class ChallengeDetailComponent {
 
   constructor(
     public route: ActivatedRoute,
-    private challengeService: ChallengeService,
-    private router: Router,
+    private readonly challengeService: ChallengeService,
+    private readonly router: Router,
     public userService: UserService) {
   }
 

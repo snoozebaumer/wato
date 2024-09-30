@@ -8,7 +8,7 @@ import {User} from '../models/user';
 export class UserService {
   private _user?: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   public loadUser() {
     this.http.get<User>('http://127.0.0.1:8080/api/user',{withCredentials: true}).subscribe({next: (response) => {

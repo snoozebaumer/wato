@@ -8,7 +8,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ShareComponent {
   id: string = "";
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private readonly route: ActivatedRoute) {
   }
 
   ngOnInit() {

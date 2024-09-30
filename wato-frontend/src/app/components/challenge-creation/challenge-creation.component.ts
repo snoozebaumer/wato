@@ -9,7 +9,7 @@ import {UserService} from '../../services/user.service';
 export class ChallengeCreationComponent {
   formError?: string;
 
-  constructor(private router: Router, private challengeService: ChallengeService, public userService: UserService) {
+  constructor(private readonly router: Router, private readonly challengeService: ChallengeService, public userService: UserService) {
   }
 
   create(challenge: string, challenger: string) {

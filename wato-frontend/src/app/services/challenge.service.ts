@@ -8,7 +8,7 @@ import {ChallengeStatus} from '../models/challenge-status';
   providedIn: 'root'
 })
 export class ChallengeService {
-  constructor(private httpClient: HttpClient) {
+  constructor(private readonly httpClient: HttpClient) {
   }
 
   createChallenge(challenge: string, challenger: string) {
