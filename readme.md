@@ -59,7 +59,7 @@ und deployen Sie es auf einem Webserver. Die Adresse des Gateways muss vor dem B
    1. [Ebene 1](#ebene-1)
    2. [Ebene 2](#ebene-2)
    3. [Ebene 3](#ebene-3)
-5. [Laufzeitsicht](#laufzeitsicht).
+5. [Laufzeitsicht](#laufzeitsicht)
    1. [Spielstatusübersicht](#spielstatusübersicht)
    2. [Seite aufrufen (Momentanen User laden)](#seite-aufrufen-momentanen-user-laden)
    3. [Spiel erstellen](#spiel-erstellen)
